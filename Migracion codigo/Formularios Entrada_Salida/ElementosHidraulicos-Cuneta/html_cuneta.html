@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Diseño de Cunetas</title>
+    <style>
+        /* Estilos opcionales para mejorar la presentación */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Diseño de Cunetas</h1>
+    <form id="cunetaForm">
+        <label for="Tbprof">Profundidad de la cuneta:</label>
+        <input type="number" id="Tbprof">
+        <label for="Tbtalizq">Talud izquierdo:</label>
+        <input type="number" id="Tbtalizq">
+        <label for="Tbtalder">Talud derecho:</label>
+        <input type="number" id="Tbtalder">
+        <label for="Tbbordlibre">Borde libre:</label>
+        <input type="number" id="Tbbordlibre">
+        <label for="Tbpend">Pendiente longitudinal (%):</label>
+        <input type="number" id="Tbpend">
+        <label for="Tbcoefrug">Coeficiente de rugosidad:</label>
+        <input type="number" id="Tbcoefrug">
+        <label for="Tbsupdren">Sup. de drenaje (ha):</label>
+        <input type="number" id="Tbsupdren">
+        <label for="Tbintensidad">Intensidad (mm/h):</label>
+        <input type="number" id="Tbintensidad">
+        <label for="TbcoefC">Coeficiente C:</label>
+        <input type="number" id="TbcoefC">
+        
+        <button type="button" id="Button1">Calcular Diseño de Cuneta</button>
+        <button type="button" id="Button6">Valores de Ejemplo</button>
+        <button type="button" id="Button10">Limpiar Formulario</button>
+    </form>
+    <div class="result">
+        <h2>Resultados:</h2>
+        <h3>Resultados:</h3>
+        <div class="input-container">
+            <label for="secccuneta">Sección de cuneta (m²):</label>
+            <input type="text" id="secccuneta" readonly>
+        </div>
+        <div class="input-container">
+            <label for="perimcuneta">Perímetro de cuneta (m):</label>
+            <input type="text" id="perimcuneta" readonly>
+        </div>
+        <div class="input-container">
+            <label for="radhidra">Radio hidráulico (m):</label>
+            <input type="text" id="radhidra" readonly>
+        </div>
+        <div class="input-container">
+            <label for="Vcuneta">Velocidad de cuneta (m/s):</label>
+            <input type="text" id="Vcuneta" readonly>
+        </div>
+        <div class="input-container">
+            <label for="Qcunetarac">Caudal de cuneta requerido (m³/s):</label>
+            <input type="text" id="Qcunetarac" readonly>
+        </div>
+        <h3>Conclusion:</h3>
+        <div class="input-container">
+            <label for="Qcunetarac">Caudal de cuneta requerido (m³/s):</label>
+            <input type="text" id="tbqmetrac" readonly>
+            <label id="Label10">respues:</label>
+            <label id="Label95">respues2:</label>
+            
+
+        </div>
+    <script src="cuneta.js"></script>
+
+    <script type="text/javascript">
+        // Event listener para el botón "Calcular Diseño de Cuneta"
+        document.getElementById("Button1").addEventListener("click", function() {
+            Button1_Click(); // Llamar a la función que realiza los cálculos
+        });
+
+        // Event listener para el botón "Valores de Ejemplo"
+        document.getElementById("Button6").addEventListener("click", function() {
+            button6Click(); // Llamar a la función que carga valores de ejemplo
+        });
+
+        // Event listener para el botón "Limpiar Formulario"
+        document.getElementById("Button10").addEventListener("click", function() {
+            clearForm(); // Llamar a la función que limpia el formulario
+        });
+    </script>
+</body>
+</html>

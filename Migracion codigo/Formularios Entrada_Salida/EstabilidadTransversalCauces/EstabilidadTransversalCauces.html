@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altunin2</title>
+</head>
+<body>
+    <div>
+        <label for="Tbvelmed">Profundidad de canal estable (m) =</label>
+        <input type="text" id="Tbvelmed" name="Tbvelmed">
+    </div>
+    <div>
+        <label for="Tbcoefk1">Coeficiente (m) = </label>
+        <input type="text" id="Tbcoefk1" name="Tbcoefk1">
+    </div>
+    <div>
+        <label for="Tbdiampart">Caudal (m³/s) = </label>
+        <input type="text" id="Tbdiampart" name="Tbdiampart">
+    </div>
+    <div>
+        <label for="DropDownList2">Número Dec:</label>
+        <select id="DropDownList2" name="DropDownList2">
+            <option value="0">4</option>
+            <option value="1">0</option>
+            <option value="2">1</option>
+            <option value="3">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+        </select>
+    </div>
+    <div>
+        <label for="DropDownList3">Diámetro medio de la partícula (mm) = </label>
+        <select id="DropDownList3" name="DropDownList3">
+            <!-- Add options 0.6 to 2.6 similar to the example -->
+            <option value="0">0.6</option>
+            <option value="1">0.75</option>
+            <option value="2">0.8</option>
+            <option value="3">0.83</option>
+            <option value="4">0.86</option>
+            <option value="5">0.9</option>
+            <option value="6">0.98</option>
+            <option value="7">1.04</option>
+            <option value="8">1.11</option>
+            <option value="9">1.17</option>
+            <option value="10">1.24</option>
+            <option value="11">1.29</option>
+            <option value="12">1.35</option>
+            <option value="13">1.38</option>
+            <option value="14">1.41</option>
+            <option value="15">1.44</option>
+            <option value="16">1.47</option>
+            <option value="17">1.5</option>
+            <option value="18">1.55</option>
+            <option value="19">1.56</option>
+            <option value="20">1.59</option>
+            <option value="21">1.62</option>
+            <option value="22">1.65</option>
+            <option value="23">1.69</option>
+            <option value="24">1.73</option>
+            <option value="25">1.76</option>
+            <option value="26">1.8</option>
+            <option value="27">1.84</option>
+            <option value="28">1.88</option>
+            <option value="29">1.91</option>
+            <option value="30">1.95</option>
+            <option value="31">2.4</option>
+            <option value="32">2.6</option>
+        </select>
+    </div>
+    <div>
+        <label for="DropDownList4">Coeficiente a =</label>
+        <select id="DropDownList4" name="DropDownList4">
+            <option value="0">Zona de montaña</option>
+            <option value="1">Zona de planicie</option>
+        </select>
+    </div>
+    <div>
+        <label for="DropDownList1">Resistencia de las orillas =</label>
+        <select id="DropDownList1" name="DropDownList1">
+            <option value="0">Margenes muy resistentes(suelo arcilloso)</option>
+            <option value="1">Margenes de mediana resistencia(arcillo-arenosos)</option>
+            <option value="2">Margenes de baja resistencia(arenosos)</option>
+        </select>
+    </div>
+    <div>
+        <button id="Button2">Calcular</button>
+        <button id="Button10">Valores por defecto</button>
+        <button id="Button9">Limpiar</button>
+    </div>
+    <div>
+        <label id="Label14" style="display:none;">Resultados:</label>
+    </div>
+
+    <div id="results">
+        <label id="Label3333358" style="display:none;">Coeficiente manning (n) = </label>
+        <input type="text" id="Tbveloccaid2" style="display:none;">
+
+        <label id="Label3333320" style="display:none;">Ancho estable (m) = </label>
+        <input type="text" id="Tbveloccaid" style="display:none;">
+
+        <label id="Label3333356" style="display:none;">Profundidad estable (m) =</label>
+        <input type="text" id="Tbveloccaid0" style="display:none;">
+
+        <label id="Label3333357" style="display:none;">Pendiente estable (%) =</label>
+        <input type="text" id="Tbveloccaid1" style="display:none;">
+    </div>
+    
+    <script src="EstabilidadTransversalCauces.js"></script>
+</body>
+</html>

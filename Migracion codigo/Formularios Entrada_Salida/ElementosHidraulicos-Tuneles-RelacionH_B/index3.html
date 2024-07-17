@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de túneles (Interactivo)</title>
+</head>
+<body>
+    <h1>Cálculo de las dimensiones de un túnel en forma de baúl</h1>
+    <form id="tunnelForm">
+        <label for="Tbhb">Relación (h/b):</label>
+        <input type="number" id="Tbhb" step="any" required><br><br>
+        
+        <label for="TbCaudal">Caudal (m³/s):</label>
+        <input type="number" id="TbCaudal" step="any" required><br><br>
+        
+        <label for="Tbn">Rugosidad (n):</label>
+        <input type="number" id="Tbn" step="any" required><br><br>
+        
+        <label for="TbS">Gradiente (i):</label>
+        <input type="number" id="TbS" step="any" required><br><br>
+        
+        <label for="Tbz">Espesor revestimiento (cm):</label>
+        <input type="number" id="Tbz" step="any" required><br><br>
+        
+        <label for="Tbrevest">Costo de revestimiento ($/m³):</label>
+        <input type="number" id="Tbrevest" step="any" required><br><br>
+        
+        <label for="Tbcosto">Costo de excavación ($/m³):</label>
+        <input type="number" id="Tbcosto" step="any" required><br><br>
+        
+        <label for="Tbcostorevest">Costo de revestimiento (m³):</label>
+        <input type="number" id="Tbcostorevest" step="any" required><br><br>
+        
+        <button type="button" id="Button1">Calcular</button>
+        <button type="button" id="Button4">Ejemplo de cálculo</button>
+        <button type="button" id="Button9">Borrar</button>
+    </form>
+    <div id="resultados" style="display: none;">
+        <h3>Resultados:</h3>
+        <p>Altura del túnel: <span id="alturaTunel"></span> m</p>
+        <p>Área mojada: <span id="areaMojada"></span> m²</p>
+        <p>Velocidad: <span id="velocidad"></span> m/s</p>
+        <!-- Otros resultados -->
+        <p>Otros resultados: <span id="otrosResultados"></span></p>
+        <p>Tipo de flujo: <span id="tipoFlujo"></span></p>
+        <p>Perímetro hidráulico: <span id="perimetroHidraulico"></span> m</p>
+        <p>Radio hidráulico: <span id="radioHidraulico"></span> m</p>
+        <p>Altura del espejo de agua: <span id="espejoAgua"></span> m</p>
+        <p>Flujo subcrítico: <span id="flujoSubcritico"></span></p>
+        <p>Costo de excavación: <span id="costoExcavacion"></span> $</p>
+        <p>Costo de revestimiento: <span id="costoRevestimiento"></span> $</p>
+        <p>Costo total: <span id="costoTotal"></span> $</p>
+    </div>
+    <script src="tu.js"></script>
+</body>
+</html>

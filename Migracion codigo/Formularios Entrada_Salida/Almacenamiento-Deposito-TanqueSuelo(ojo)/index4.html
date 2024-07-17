@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depósitos</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="depositForm">
+        <!-- Aquí se deben agregar todos los elementos del formulario: textboxes, dropdowns, labels, etc. -->
+        <input type="text" id="tbhabmet1" placeholder="Habitantes" />
+        <input type="text" id="tbdotmet1" placeholder="Dotación" />
+        <input type="text" id="tbntanquesmet1" placeholder="Número de Tanques" />
+        <input type="text" id="tbaltsedmet1" placeholder="Altura de Sedimentación" />
+        <input type="text" id="tbaltbordlibmet1" placeholder="Altura del Borde Libre" />
+        <select id="Ddformamet1">
+            <option value="0">Seleccione Forma</option>
+            <option value="1">Cuadrado</option>
+            <option value="2">Rectangular</option>
+            <option value="3">Cilíndrico</option>
+        </select>
+        <select id="DropDownList2">
+            <option value="0">4</option>
+            <option value="1">0</option>
+            <option value="2">1</option>
+            <option value="3">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+        </select>
+        <button type="button" id="button1">Calcular</button>
+        <button type="button" id="button6">Ejemplo</button>
+        <button type="button" id="button10">Borrar</button>
+        <label id="Label147" class="hidden">Vtotal</label>
+        <label id="Label8" class="hidden">Qprom</label>
+        <label id="Label91" class="hidden">Vcomp</label>
+        <label id="Label92" class="hidden">Vemer</label>
+        <label id="Label93" class="hidden">Vcontinc</label>
+        <label id="Label94" class="hidden">Vplant</label>
+        <label id="Label95" class="hidden">Altura</label>
+        <input type="text" id="tbQprommet1" class="hidden" />
+        <input type="text" id="tbVcompmet1" class="hidden" />
+        <input type="text" id="tbVemermet1" class="hidden" />
+        <input type="text" id="tbVcontincmet1" class="hidden" />
+        <input type="text" id="tbVplanttrantmet1" class="hidden" />
+        <input type="text" id="tbVtotalmet1" class="hidden" />
+        <input type="text" id="tbr1met1" class="hidden" />
+        <label id="Label97" class="hidden">Dimensiones</label>
+        <label id="Label96" class="hidden"></label>
+        <label id="Label98" class="hidden"></label>
+        <input type="text" id="tbr2met1" class="hidden" />
+        <label id="Label3333375" class="hidden"></label>
+        <input type="text" id="tbr3met1" class="hidden" />
+    </form>
+    <script src="depositos-Tanque.js"></script>
+</body>
+</html>

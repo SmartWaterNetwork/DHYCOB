@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Espaciamiento de drenes, método de Donnan, para drenes abiertos</title>
+    <style>
+        .style1 {
+            width: 100%;
+        }
+        .error {
+            background-color: red;
+        }
+        .results {
+            color: red;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #0000FF">Espaciamiento de drenes, método de Donnan, para drenes abiertos</h1>
+
+    <label for="decimalAproximacion" style="color: #0000FF">Aproximación decimal de resultados:</label>
+    <select id="decimalAproximacion">
+        <option value="0">Lista</option>
+        <option value="1">0 decimales</option>
+        <option value="2">1 decimal</option>
+        <option value="3">2 decimales</option>
+        <option value="4">3 decimales</option>
+        <option value="5">4 decimales</option>
+    </select>
+    <br><br>
+
+    <h2 style="color: #0000FF">DATOS:</h2>
+    <table class="style1">
+        <tr>
+            <td>
+                <label for="recarga">Recarga (m/día) =</label>
+                <input type="text" id="recarga">
+                <br>
+
+                <label for="profundidadEstrato">Profundidad estrato impermeable (m) =</label>
+                <input type="text" id="profundidadEstrato">
+                <br>
+
+                <label for="profundidadDren">Profundidad del dren (m) =</label>
+                <input type="text" id="profundidadDren">
+                <br>
+
+                <label for="profundidadTablaAgua">Profundidad de la tabla de agua (m) =</label>
+                <input type="text" id="profundidadTablaAgua">
+                <br>
+
+                <label for="conductividadHidraulica">Conductividad hidráulica (m/día) =</label>
+                <input type="text" id="conductividadHidraulica">
+                <br>
+
+                <label for="tiranteDren">Tirante del dren (m) =</label>
+                <input type="text" id="tiranteDren">
+                <br>
+
+                <label for="anchoSolera">Ancho de solera (m) =</label>
+                <input type="text" id="anchoSolera">
+                <br>
+
+                <label for="taludDren">Talud del dren =</label>
+                <input type="text" id="taludDren">
+            </td>
+            <td>
+                <embed src="videos/Zanjas abiertas suelo homogeneo.swf" width="311" height="264">
+            </td>
+        </tr>
+    </table>
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+    <button onclick="ejemplo()">Ejemplo</button>
+    <button onclick="borrar()">Borrar</button>
+    <br><br>
+
+    <h2 id="resultadosTitulo" class="hidden" style="color: #0000FF">RESULTADOS</h2>
+    <br>
+
+    <label id="espaciamientoLabel" class="hidden">Espaciamiento entre drenes (m) =</label>
+    <input type="text" id="espaciamiento" class="hidden results">
+    <br><br>
+
+    <label id="distanciaSuperficieLabel" class="hidden">Distancia desde la superficie del agua en el dren,</label>
+    <br>
+    <label id="capaImpermeableLabel" class="hidden">hasta la capa impermeable (m) =</label>
+    <input type="text" id="distanciaSuperficie" class="hidden results">
+    <br><br>
+
+    <label id="distanciaMedioLabel" class="hidden">Distancia desde el punto medio de la tabla de agua,</label>
+    <br>
+    <label id="capaImpermeableMedioLabel" class="hidden">hasta la capa impermeable (m) =</label>
+    <input type="text" id="distanciaMedio" class="hidden results">
+
+    <script>
+        function calcular() {
+            // Obtener los valores de los campos de texto
+            let recarga = parseFloat(document.getElementById("recarga").value);
+            let profundidadEstrato = parseFloat(document.getElementById("profundidadEstrato").value);
+            let profundidadDren = parseFloat(document.getElementById("profundidadDren").value);
+            let profundidadTablaAgua = parseFloat(document.getElementById("profundidadTablaAgua").value);
+            let conductividadHidraulica = parseFloat(document.getElementById("conductividadHidraulica").value);
+            let tiranteDren = parseFloat(document.getElementById("tiranteDren").value);
+            let anchoSolera = parseFloat(document.getElementById("anchoSolera").value);
+            let taludDren = parseFloat(document.getElementById("taludDren").value);
+
+            let valid = validateInputs();
+
+            if (valid) return;
+
+            let Ndec = parseInt(document.getElementById("decimalAproximacion").value);
+            
+            let Qprommet1 = Math.sqrt((4 * conductividadHidraulica * ((Math.pow(profundidadEstrato - profundidadTablaAgua, 2)) - (Math.pow(profundidadEstrato - profundidadDren + tiranteDren, 2))) / recarga));
+            let Vcompmet1 = profundidadEstrato - profundidadDren + tiranteDren;
+            let Vemermet1 = profundidadEstrato - profundidadTablaAgua;
+            console.log(Qprommet1.toFixed(Ndec))
+            console.log(Vcompmet1.toFixed(Ndec))
+            console.log(Vemermet1.toFixed(Ndec))
+        }
+
+        function validateInputs() {
+            let inputs = document.querySelectorAll("input[type='text']");
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (!input.value || isNaN(input.value) || parseFloat(input.value) <= 0) {
+                    input.classList.add("error");
+                    valid = false;
+                } else {
+                    input.classList.remove("error");
+                }
+            });
+
+            return valid;
+        }
+
+        function ejemplo() {
+            document.getElementById("recarga").value = 0.01;
+            document.getElementById("profundidadEstrato").value = 4.8;
+            document.getElementById("profundidadDren").value = 1.5;
+            document.getElementById("profundidadTablaAgua").value = 1;
+            document.getElementById("conductividadHidraulica").value = 1.2;
+            document.getElementById("tiranteDren").value = 0.2;
+            document.getElementById("anchoSolera").value = 0.5;
+            document.getElementById("taludDren").value = 1;
+        }
+
+        function borrar() {
+            let inputs = document.querySelectorAll("input[type='text']");
+            inputs.forEach(input => {
+                input.value = "";
+                input.classList.remove("error");
+            });
+
+            document.querySelectorAll(".results").forEach(result => {
+                result.classList.add("hidden");
+            });
+
+            document.querySelectorAll("label.hidden").forEach(label => {
+                label.classList.add("hidden");
+            });
+
+            document.getElementById("resultadosTitulo").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
+
+

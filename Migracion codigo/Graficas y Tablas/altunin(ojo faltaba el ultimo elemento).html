@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Canal</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora de Canal</h2>
+    <form id="canalForm">
+        <label for="Tbbc">Base de canal (bc):</label>
+        <input type="number" id="Tbbc" required><br><br>
+        
+        <label for="TbJ">J:</label>
+        <input type="number" id="TbJ" required><br><br>
+        
+        <label for="Tbbv">Base del vertedero (bv):</label>
+        <input type="number" id="Tbbv" required><br><br>
+        
+        <label for="Tbm">M:</label>
+        <input type="number" id="Tbm" required><br><br>
+        
+        <label for="TbQ">Caudal (Qd):</label>
+        <input type="number" id="TbQ" required><br><br>
+        
+        <label for="tbrugosidadCP">Rugosidad:</label>
+        <input type="number" id="tbrugosidadCP" required><br><br>
+        
+        <label for="ConCanPasoN1">Seleccionar:</label>
+        <select id="ConCanPasoN1">
+            <option value="0">Opción 1</option>
+            <option value="1">Opción 2</option>
+            <option value="2">Opción 3</option>
+            <option value="3">Opción 4</option>
+        </select><br><br>
+        
+        <button type="button" onclick="calcular()">Calcular y Mostrar Tabla</button>
+        <button type="button" onclick="BtnCaptacionConvencionalCP0_Click()">Ejemplo</button>
+        <button type="button" onclick="BtnCaptacionConvencionalCP1_Click()">Eliminar</button>
+        
+        <br><br>
+        <label for="lblLtrn">Longitud de la transición Ltrn (m):</label>
+        <label id="lblLtrn"></label>
+    </form>
+    
+    <hr>
+    
+    <div id="tablaResultado">
+        <!-- Aquí se mostrará la tabla generada -->
+    </div>
+    
+    <script>
+        function calcular() {
+            var Tbbc = parseFloat(document.getElementById('Tbbc').value);
+            var TbJ = parseFloat(document.getElementById('TbJ').value);
+            var Tbbv = parseFloat(document.getElementById('Tbbv').value);
+            var Tbm = parseFloat(document.getElementById('Tbm').value);
+            var TbQ = parseFloat(document.getElementById('TbQ').value);
+            var tbrugosidadCP = parseFloat(document.getElementById('tbrugosidadCP').value);
+            var ConCanPasoN1 = document.getElementById('ConCanPasoN1').selectedIndex;
+            
+            var g = 9.81;
+            var m = Tbm;
+            
+            // Calcular longitud de transición Ltrn con ajuste
+            var Ltrn = Math.abs((Tbbv - Tbbc) / (2 * Math.tan(12.5 * Math.PI / 180)));
+            var diff = Ltrn - Math.floor(Ltrn);
+
+            if (diff < 0.05) {
+                Ltrn = Math.floor(Ltrn) + 0.05;
+            } else if (diff >= 0.05 && diff < 0.1) {
+                Ltrn = Math.floor(Ltrn) + 0.1;
+            } else if (diff >= 0.1 && diff < 0.15) {
+                Ltrn = Math.floor(Ltrn) + 0.15;
+            } else if (diff >= 0.15 && diff < 0.2) {
+                Ltrn = Math.floor(Ltrn) + 0.2;
+            } else if (diff >= 0.2 && diff < 0.25) {
+                Ltrn = Math.floor(Ltrn) + 0.25;
+            } else if (diff >= 0.25 && diff < 0.3) {
+                Ltrn = Math.floor(Ltrn) + 0.3;
+            } else if (diff >= 0.3 && diff < 0.35) {
+                Ltrn = Math.floor(Ltrn) + 0.35;
+            } else if (diff >= 0.35 && diff < 0.4) {
+                Ltrn = Math.floor(Ltrn) + 0.4;
+            } else if (diff >= 0.4 && diff < 0.45) {
+                Ltrn = Math.floor(Ltrn) + 0.45;
+            } else if (diff >= 0.45 && diff < 0.5) {
+                Ltrn = Math.floor(Ltrn) + 0.5;
+            } else if (diff >= 0.5 && diff < 0.55) {
+                Ltrn = Math.floor(Ltrn) + 0.55;
+            } else if (diff >= 0.55 && diff < 0.6) {
+                Ltrn = Math.floor(Ltrn) + 0.6;
+            } else if (diff >= 0.6 && diff < 0.65) {
+                Ltrn = Math.floor(Ltrn) + 0.65;
+            } else if (diff >= 0.65 && diff < 0.7) {
+                Ltrn = Math.floor(Ltrn) + 0.7;
+            } else if (diff >= 0.7 && diff < 0.75) {
+                Ltrn = Math.floor(Ltrn) + 0.75;
+            } else if (diff >= 0.75 && diff < 0.8) {
+                Ltrn = Math.floor(Ltrn) + 0.8;
+            } else if (diff >= 0.8 && diff < 0.85) {
+                Ltrn = Math.floor(Ltrn) + 0.85;
+            } else if (diff >= 0.85 && diff < 0.9) {
+                Ltrn = Math.floor(Ltrn) + 0.9;
+            } else if (diff >= 0.9 && diff < 0.95) {
+                Ltrn = Math.floor(Ltrn) + 0.95;
+            } else {
+                Ltrn = Math.floor(Ltrn) + 1;
+            }
+
+            // Mostrar Ltrn en el label correspondiente
+            document.getElementById('lblLtrn').textContent = Ltrn.toFixed(2) + ' m';
+
+            // Determinar valor de n según selección
+            var n = 0.012;
+            switch (ConCanPasoN1) {
+                case 0:
+                    n = 0.012;
+                    break;
+                case 1:
+                    n = 0.014;
+                    break;
+                case 2:
+                    n = 0.015;
+                    break;
+                case 3:
+                    n = 0.02;
+                    break;
+            }
+            if (!isNaN(tbrugosidadCP)) {
+                n = tbrugosidadCP;
+            }
+            
+            var Qd = TbQ;
+            var bc = Tbbc;
+            var bv = Tbbv;
+
+            var tablaHtml = '<table><tr><th>Abscisa (m)</th><th>Base del canal (m)</th></tr>';
+            
+            // Calcular y construir la tabla
+            var R = 1.183 * Ltrn;
+            for (var i = 0; i <= Ltrn; i += 0.1) {
+                var bcal = 0;
+                
+                if (i < (Ltrn / 2)) {
+                    bcal = 2 * (Ltrn * Math.tan(12.5 * Math.PI / 180) - (R - Math.sqrt((R * R) - (i * i)))) + bc;
+                } else {
+                    bcal = 2 * (R - Math.sqrt((R * R) - ((Ltrn - i) * (Ltrn - i)))) + bc;
+                }
+                
+                tablaHtml += '<tr><td>' + i.toFixed(4) + '</td><td>' + bcal.toFixed(4) + '</td></tr>';
+            }
+            tablaHtml += '</table>';
+            
+            document.getElementById('tablaResultado').innerHTML = tablaHtml;
+        }
+
+        function BtnCaptacionConvencionalCP0_Click() {
+            document.getElementById('TbQ').value = 2.8;
+            document.getElementById('Tbbv').value = 2.4;
+            document.getElementById('tbrugosidadCP').value = 0.01;
+            document.getElementById('Tbbc').value = 1.3;
+            document.getElementById('TbJ').value = 0.1;
+            document.getElementById('Tbm').value = 0;
+            document.getElementById('ConCanPasoN1').selectedIndex = 0;
+            calcular(); // Llamar a la función calcular después de establecer los valores
+        }
+
+        function BtnCaptacionConvencionalCP1_Click() {
+            // Restaurar colores de fondo
+            document.getElementById('tbrugosidadCP').style.backgroundColor = 'white';
+            document.getElementById('Tbm').style.backgroundColor = 'white';
+            document.getElementById('Tbbc').style.backgroundColor = 'white';
+            document.getElementById('TbJ').style.backgroundColor = 'white';
+            document.getElementById('Tbbv').style.backgroundColor = 'white';
+            document.getElementById('TbQ').style.backgroundColor = 'white';
+
+            // Limpiar valores de los campos
+            document.getElementById('TbQ').value = '';
+            document.getElementById('Tbbv').value = '';
+            document.getElementById('tbrugosidadCP').value = '';
+            document.getElementById('Tbbc').value = '';
+            document.getElementById('TbJ').value = '';
+            document.getElementById('Tbm').value = '';
+            document.getElementById('ConCanPasoN1').selectedIndex = 0;
+
+            // Ocultar elementos no relevantes (sustituir con el ID correcto si se requiere)
+            document.getElementById('Label3333327').style.display = 'none';
+            document.getElementById('GridView4').style.display = 'none';
+            document.getElementById('TbLtrcp').style.display = 'none';
+            document.getElementById('Label148').style.display = 'none';
+
+            // Limpiar label de Ltrn
+            document.getElementById('lblLtrn').textContent = '';
+        }
+    </script>
+</body>
+</html>

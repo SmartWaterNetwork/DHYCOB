@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño del revestimiento de túneles</title>
+    <style type="text/css">
+        .style1 {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Cálculo del revestimiento de un túnel en forma de baúl</h3>
+        <br />
+        <br />
+        <label for="DropDownList2">Aproximación decimal de resultados:</label>
+        <select id="DropDownList2">
+            <option value="0">Lista</option>
+            <option value="1">0 decimales</option>
+            <option value="2">1 decimal</option>
+            <option value="3">2 decimales</option>
+            <option value="4">3 decimales</option>
+            <option value="5">4 decimales</option>
+        </select>
+        <br />
+        <br />
+        <label for="Label49">Datos:</label>
+        <br />
+        <table class="style1">
+            <tr>
+                <td>
+                    Ancho del túnel (m): <input type="text" id="TbCaudal">
+                    <br />
+                    <br />
+                    Tipo de terreno:
+                    <select id="DropDownList1">
+                        <option value="0">Terreno</option>
+                        <option value="1">Cuarcitos y basaltos</option>
+                        <option value="2">Granitos y otras rocas igneas</option>
+                        <option value="3">Calizas, dolomitas y areniscas</option>
+                        <option value="4">Esquistos, pizarras, conglomerado</option>
+                        <option value="5">Roca descompuesta, arcilla, loess</option>
+                        <option value="6">Suelo arcilloso, grava, limo</option>
+                        <option value="7">Suelo vegetal, arena</option>
+                        <option value="8">Suelo saturado de agua</option>
+                    </select>
+                    <br />
+                    <br />
+                    Alto del túnel (m): <input type="text" id="Tbz">
+                </td>
+                <td>
+                    <!-- ASPNetFlash:Flash no se puede migrar directamente a HTML -->
+                    <!-- Se necesita una alternativa en HTML5 para reproducir un archivo SWF -->
+                    <!-- Aquí puedes añadir tu propia solución HTML5 -->
+                </td>
+            </tr>
+        </table>
+        <button id="Button1" type="button">Calcular</button>
+        <button id="Button4" type="button">Ejemplo de cálculo</button>
+        <button id="Button9" type="button">Borrar</button>
+        <br />
+        <br />
+        <label for="Label40" style="color: #0000FF">Resultados:</label>
+        <br />
+        <br />
+        <label for="TbY" style="color: #0000FF; display: none;">Presión vertical (T/m²):</label>
+        <input type="text" id="TbY" style="display: none;">
+        <label for="tbperimetrohid" style="color: #0000FF; display: none;">h:</label>
+        <input type="text" id="tbperimetrohid" style="display: none;">
+        <br />
+        <br />
+        <label for="tbareahid" style="color: #0000FF; display: none;">Presión horizontal (T/m²):</label>
+        <input type="text" id="tbareahid" style="display: none;">
+        <label for="tbradiohid" style="color: #0000FF; display: none;">Momento en la clave (T x m):</label>
+        <input type="text" id="tbradiohid" style="display: none;">
+        <br />
+        <br />
+        <label for="tbespejoagua" style="color: #0000FF; display: none;">Empuje horizontal (T/m):</label>
+        <input type="text" id="tbespejoagua" style="display: none;">
+        <label for="TbV" style="color: #0000FF; display: none;">Empuje vertical (T/m):</label>
+        <input type="text" id="TbV" style="display: none;">
+        <br />
+        <br />
+        <label for="TbF1" style="color: #0000FF; display: none;">Espesor del revestimiento (m):</label>
+        <input type="text" id="TbF1" style="display: none;">
+        <br />
+        <br />
+        <label for="TbE1" style="color: #0000FF; display: none;">Esfuerzo a compresión (T/m²):</label>
+        <input type="text" id="TbE1" style="display: none;">
+        <label for="tbtipoflujo" style="color: #0000FF; display: none;">Esfuerzo a tracción (T/m²):</label>
+        <input type="text" id="tbtipoflujo" style="display: none;">
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <script src="sp.js"></script>
+</body>
+</html>

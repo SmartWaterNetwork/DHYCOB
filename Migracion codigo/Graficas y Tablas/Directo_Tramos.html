@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Hidráulica</title>
+    <style>
+      .error {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Calculadora Hidráulica</h2>
+    <form id="hydraulicForm">
+      <label for="TbCaudal">Caudal (m³/s):</label>
+      <input
+        type="number"
+        id="TbCaudal"
+        name="TbCaudal"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbB">B:</label>
+      <input
+        type="number"
+        id="TbB"
+        name="TbB"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="Tbz">Z:</label>
+      <input
+        type="number"
+        id="Tbz"
+        name="Tbz"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbS">S:</label>
+      <input
+        type="number"
+        id="TbS"
+        name="TbS"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="Tbn">N:</label>
+      <input
+        type="number"
+        id="Tbn"
+        name="Tbn"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbX">X:</label>
+      <input
+        type="number"
+        id="TbX"
+        name="TbX"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbY1">Y1:</label>
+      <input
+        type="number"
+        id="TbY1"
+        name="TbY1"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbY2">Y2:</label>
+      <input
+        type="number"
+        id="TbY2"
+        name="TbY2"
+        step="any"
+        required
+      /><br /><br />
+
+      <label for="TbY3">Y3:</label>
+      <input
+        type="number"
+        id="TbY3"
+        name="TbY3"
+        step="any"
+        required
+      /><br /><br />
+
+      <label id="Label41"> </label><br /><br />
+
+      <button type="button" onclick="calculate()">Calcular</button>
+      <input type="button" value="Ejemplo" onclick="setDefaultValues()" />
+      <input type="button" value="Eliminar" onclick="clearValues()" />
+    </form>
+
+    <div id="results" style="display: none">
+      <h3>Resultados</h3>
+      <table id="resultTable" border="1">
+        <thead>
+          <tr>
+            <th>Tirante (m)</th>
+            <th>Área (m²)</th>
+            <th>Radio Hidráulico (m)</th>
+            <th>Velocidad (m/s)</th>
+            <th>F</th>
+            <th>F2</th>
+            <th>DELTAE</th>
+            <th>SE</th>
+            <th>SE2</th>
+            <th>DELTAX</th>
+            <th>Longitud (m)</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody">
+          <!-- Result rows will be added dynamically -->
+        </tbody>
+      </table>
+    </div>
+    <div
+      id="chartContainer"
+      style="width: 800px; height: 600px; margin-top: 20px"
+    ></div>
+    <script type="text/javascript" src="chartdir.js"></script>
+
+    <script>
+      function calculate() {
+        var TbCaudal = parseFloat(document.getElementById("TbCaudal").value);
+        var TbB = parseFloat(document.getElementById("TbB").value);
+        var Tbz = parseFloat(document.getElementById("Tbz").value);
+        var TbS = parseFloat(document.getElementById("TbS").value);
+        var Tbn = parseFloat(document.getElementById("Tbn").value);
+        var TbX = parseFloat(document.getElementById("TbX").value);
+        var TbY1 = parseFloat(document.getElementById("TbY1").value);
+        var TbY2 = parseFloat(document.getElementById("TbY2").value);
+        var TbY3 = parseFloat(document.getElementById("TbY3").value);
+
+        // Validate if all inputs are filled
+        if (
+          isNaN(TbCaudal) ||
+          isNaN(TbB) ||
+          isNaN(Tbz) ||
+          isNaN(TbS) ||
+          isNaN(Tbn) ||
+          isNaN(TbX) ||
+          isNaN(TbY1) ||
+          isNaN(TbY2) ||
+          isNaN(TbY3)
+        ) {
+          alert("Por favor, llene todos los campos correctamente.");
+          return;
+        }
+
+        var Ndec = parseInt(document.getElementById("Label41").value);
+        var resultsTable = document.getElementById("resultBody");
+        resultsTable.innerHTML = ""; // Clear previous results
+
+        var M = Math.sqrt(1 + Math.pow(Tbz, 2));
+        var i = 0;
+        var Y3 = (TbY2 - TbY1) / TbY3;
+        var fila = [];
+
+        for (var Y = TbY1; Y <= TbY2 + Y3; Y += Y3) {
+          var A = (TbB + Tbz * Y) * Y;
+          var P = TbB + 2 * Y * M;
+          var R = A / P;
+          var T = TbB + 2 * Tbz * Y;
+          var V = TbCaudal / A;
+          var F = V / Math.sqrt((9.81 * A) / T);
+          var SE = Math.pow((V * Tbn) / Math.pow(R, 2 / 3), 2);
+
+          i++;
+          if (i === 1) {
+            var F2 = 0;
+            var DELTAE = 0;
+            var SE2 = 0;
+            var DELTAX = 0;
+            var X = TbX;
+
+            fila = [Y, A, R, V, F, F2, DELTAE, SE, SE2, DELTAX, X];
+          } else {
+            var F2 = (F + F1) / 2;
+            var SE2 = (SE + SE1) / 2;
+            var DELTAE = Y3 * (1 - Math.pow(F2, 2));
+            var DELTAX = DELTAE / (TbS - SE2);
+            X += Math.abs(DELTAX);
+
+            fila = [Y, A, R, V, F, F2, DELTAE, SE, SE2, DELTAX, X];
+          }
+          var newRow = resultsTable.insertRow();
+          for (var j = 0; j < fila.length; j++) {
+            var cell = newRow.insertCell(j);
+            cell.textContent = fila[j];
+          }
+
+          F1 = F;
+          SE1 = SE;
+
+          if (i - 1 === TbY3) {
+            break;
+          }
+        }
+
+        document.getElementById("results").style.display = "block";
+        drawChart(fila); // Aquí se pasa 'fila' en lugar de 'data'
+      }
+
+      function drawChart(data) {
+        // Configurar el tamaño y los márgenes del gráfico
+        var width = 800;
+        var height = 400;
+        var margin = 50;
+
+        // Crear un objeto XYChart de ChartDirector
+        var chart = new XYChart(width, height);
+        chart.setPlotArea(
+          margin,
+          margin,
+          width - 2 * margin,
+          height - 2 * margin,
+          -1,
+          -1,
+          -1,
+          0xffffff
+        );
+
+        // Configurar el título del gráfico
+        chart.addTitle("Gráfico de Tirante vs. Distancia", "Arial Bold", 12);
+
+        // Configurar etiquetas de los ejes
+        chart.xAxis().setTitle("Distancia");
+        chart.yAxis().setTitle("Tirante");
+
+        // Agregar datos al gráfico
+        var distances = data.map(function (item) {
+          return item[10];
+        }); // Array de distancias
+        var tirantes = data.map(function (item) {
+          return item[0];
+        }); // Array de tirantes
+
+        // Crear la línea del gráfico
+        chart.addLineLayer(tirantes, 0xff0000, "Tirante");
+
+        // Configurar la leyenda del gráfico
+        chart
+          .addLegend(width - margin - 100, margin, false, "Arial", 10)
+          .setBackground(0xdddddd, 0);
+
+        // Obtener el contenedor del gráfico en el HTML
+        var chartContainer = document.getElementById("chartContainer");
+
+        // Renderizar el gráfico en el contenedor especificado
+        chart.makeChart(chartContainer);
+      }
+
+      function setDefaultValues() {
+        document.getElementById("TbCaudal").value = 1.5;
+        document.getElementById("TbB").value = 1.5;
+        document.getElementById("Tbz").value = 1;
+        document.getElementById("TbS").value = 0.0005;
+        document.getElementById("Tbn").value = 0.025;
+        document.getElementById("TbX").value = 0;
+        document.getElementById("TbY3").value = 4;
+        document.getElementById("TbY2").value = 0.927;
+        document.getElementById("TbY1").value = 0.743;
+        document.getElementById("Label41").classList.add("hidden");
+        // Assuming you have some data to plot, replace with actual data
+      }
+
+      // Function to clear values
+      function clearValues() {
+        document.getElementById("TbCaudal").value = "";
+        document.getElementById("TbB").value = "";
+        document.getElementById("Tbz").value = "";
+        document.getElementById("TbS").value = "";
+        document.getElementById("Tbn").value = "";
+        document.getElementById("TbX").value = "";
+        document.getElementById("TbY1").value = "";
+        document.getElementById("TbY2").value = "";
+        document.getElementById("TbY3").value = "";
+        document.getElementById("Label41").classList.add("hidden");
+        const chartContainer = document.getElementById("WebChartViewerTestDT");
+        if (chartContainer) {
+          chartContainer.innerHTML = ""; // Clear the chart
+        }
+      }
+    </script>
+  </body>
+</html>

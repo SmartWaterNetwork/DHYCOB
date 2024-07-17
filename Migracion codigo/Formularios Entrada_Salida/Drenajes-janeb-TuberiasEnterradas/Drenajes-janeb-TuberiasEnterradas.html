@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Calculation</title>
+    <style>
+        .red-back {
+            background-color: red;
+        }
+        .white-back {
+            background-color: white;
+        }
+        .red-text {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="cunetaForm">
+        <label for="tbaltsedmet1">Profundidad estrato impermeable (m) = </label>
+        <input type="text" id="tbaltsedmet1" placeholder="Altura del Sedimento (m)">
+        <p id="input_tbaltsedmet1" class="input-display"></p>
+
+        <label for="tbaltbordlibmet1">Coeficiente de rugosidad:</label>
+        <input type="text" id="tbaltbordlibmet1" placeholder="Altura del Bordo Libre (m)">
+        <p id="input_tbaltbordlibmet1" class="input-display"></p>
+
+        <label for="tbntanquesmet1">Profundidad de la tabla de agua inicial, después del riego (m) = </label>
+        <input type="text" id="tbntanquesmet1" placeholder="Número de Tanques">
+        <p id="input_tbntanquesmet1" class="input-display"></p>
+
+        <label for="tbdotmet1">Profundidad de la tabla de agua, t días después (m) = </label>
+        <input type="text" id="tbdotmet1" placeholder="Dotación (m)">
+        <p id="input_tbdotmet1" class="input-display"></p>
+
+        <label for="tbaltbordlibmet2">Tiempo necesario para dreprimir la tabla de agua de ho a ht (días)</label>
+        <input type="text" id="tbaltbordlibmet2" placeholder="Tiempo (min)">
+        <p id="input_tbaltbordlibmet2" class="input-display"></p>
+
+        <label for="tbaltbordlibmet3">Conductividad hidráulica (m/día) =</label>
+        <input type="text" id="tbaltbordlibmet3" placeholder="K">
+        <p id="input_tbaltbordlibmet3" class="input-display"></p>
+
+        <label for="tbaltbordlibmet4">Radio de tubería (m) = </label>
+        <input type="text" id="tbaltbordlibmet4" placeholder="Y">
+        <p id="input_tbaltbordlibmet4" class="input-display"></p>
+
+        <label for="tbaltbordlibmet7">Espacio poroso drenable (%) = </label>
+        <input type="text" id="tbaltbordlibmet7" placeholder="Fi">
+        <p id="input_tbaltbordlibmet7" class="input-display"></p>
+
+        <button id="Button1" onclick="button1Click(event)">Calculate</button>
+        <button id="Button6" onclick="button6Click(event)">Set Example Values</button>
+        <button id="Button10" onclick="button10Click(event)">Reset Form</button>
+    </form>
+    <!-- Form elements here -->
+
+    <!-- Output fields here -->
+    <label for="tbQprommet1">Espaciamiento entre drenes (m) =</label>
+    <input type="text" id="tbQprommet1" style="display: none;" placeholder="Qprom"></p>
+    <label for="tbQprommet2">Carga de agua inicial (m) = </label>
+    <input type="text" id="tbQprommet2" style="display: none;" placeholder="Qprom2"></p>
+    <label for="tbVcompmet1">Carga de agua t días después (m) = </label>
+    <input type="text" id="tbVcompmet1" style="display: none;" placeholder="Vcomp1"></p>
+    <label for="tbVcompmet2">Radio de tubería (m) =  </label>
+    <input type="text" id="tbVcompmet2" style="display: none;" placeholder="Vcomp2"></p>
+    <label for="tbVemermet1">Espacio poroso drenable (%) =</label>
+    <input type="text" id="tbVemermet1" style="display: none;" placeholder="Vemerm1"></p>
+
+    <script>
+        function button1Click(event) {
+            event.preventDefault();
+            
+            let tbaltsedmet1 = document.getElementById("tbaltsedmet1");
+            let tbaltbordlibmet1 = document.getElementById("tbaltbordlibmet1");
+            let tbntanquesmet1 = document.getElementById("tbntanquesmet1");
+            let tbdotmet1 = document.getElementById("tbdotmet1");
+            let tbaltbordlibmet2 = document.getElementById("tbaltbordlibmet2");
+            let tbaltbordlibmet3 = document.getElementById("tbaltbordlibmet3");
+            let tbaltbordlibmet4 = document.getElementById("tbaltbordlibmet4");
+            let tbaltbordlibmet7 = document.getElementById("tbaltbordlibmet7");
+
+            let fields = [tbaltsedmet1, tbaltbordlibmet1, tbntanquesmet1, tbdotmet1, tbaltbordlibmet2, tbaltbordlibmet3, tbaltbordlibmet4, tbaltbordlibmet7];
+            let valid = true;
+
+            fields.forEach(field => {
+                if (field.value === "") {
+                    field.classList.add("red-back");
+                    valid = false;
+                } else {
+                    field.classList.remove("red-back");
+                    field.classList.add("white-back");
+                }
+            });
+
+            if (valid) {
+                let PEI = parseFloat(tbdotmet1.value);
+                let PD = parseFloat(tbntanquesmet1.value);
+                let PTAho = parseFloat(tbaltsedmet1.value);
+                let PTAht = parseFloat(tbaltbordlibmet1.value);
+                let tiempo = parseFloat(tbaltbordlibmet2.value);
+                let k = parseFloat(tbaltbordlibmet3.value);
+                let y = parseFloat(tbaltbordlibmet4.value);
+                let fi = parseFloat(tbaltbordlibmet7.value);
+
+                let ho = (PEI - (PEI - PD + y)) - PTAho;
+                let ht = (PEI - (PEI - PD + y)) - PTAht;
+                let phi = (k / 100) ** 0.5;
+                phi = fi / 100;
+                let Dest = PEI - PD + y;
+                let per = y * 3.14159;
+
+                let relhtho = ht / ho;
+                let coefC;
+
+                if (relhtho > 1) {
+                    coefC = 0.01;
+                } else if (relhtho === 1) {
+                    coefC = 0.1;
+                } else if (relhtho > 0.99) {
+                    coefC = 0.2;
+                } else if (relhtho > 0.95) {
+                    coefC = ((((1 - relhtho) / (1 - 0.95)) * (0.2 - 0.3)) - 0.2) * (-1);
+                } else if (relhtho > 0.2) {
+                    coefC = ((((0.95 - relhtho) / (0.95 - 0.2)) * (0.3 - 0.8)) - 0.3) * (-1);
+                } else if (relhtho > 0) {
+                    coefC = ((((0.2 - relhtho) / (0.2 - 0)) * (0.8 - 0.98)) - 0.8) * (-1);
+                }
+
+                let d, Lest, Lcal;
+
+                for (d = 0.01; d <= 100; d += 0.01) {
+                    Lest = (1 / coefC) * ((((4 * tiempo * k) / phi) * (d + ((ho + ht) / 4))) ** 0.5);
+                    d = Dest / ((((8 / 3.141592654) * (Dest / Lest) * Math.log(Dest / per))) + 1);
+                    Lcal = (1 / coefC) * ((((4 * tiempo * k) / phi) * (d + ((ho + ht) / 4))) ** 0.5);
+
+                    if (Lcal < (Lest * 1.01) && Lcal > (Lest * 0.99)) {
+                        break;
+                    }
+                    if (Lest < (Lcal * 1.01) && Lest > (Lcal * 0.99)) {
+                        break;
+                    }
+                }
+
+                document.getElementById("tbQprommet1").style.display = "block";
+                document.getElementById("tbQprommet1").value = Lest.toFixed(2);
+                document.getElementById("tbQprommet1").classList.add("red-text");
+
+                document.getElementById("tbQprommet2").style.display = "block";
+                document.getElementById("tbQprommet2").value = ho.toFixed(2);
+                document.getElementById("tbQprommet2").classList.add("red-text");
+
+                document.getElementById("tbVcompmet1").style.display = "block";
+                document.getElementById("tbVcompmet1").value = ht.toFixed(2);
+                document.getElementById("tbVcompmet1").classList.add("red-text");
+
+                document.getElementById("tbVcompmet2").style.display = "block";
+                document.getElementById("tbVcompmet2").value = Dest.toFixed(2);
+                document.getElementById("tbVcompmet2").classList.add("red-text");
+
+                document.getElementById("tbVemermet1").style.display = "block";
+                document.getElementById("tbVemermet1").value = d.toFixed(2);
+                document.getElementById("tbVemermet1").classList.add("red-text");
+
+                document.getElementById("Label8").style.display = "block";
+                document.getElementById("Label91").style.display = "block";
+                document.getElementById("Label3333378").style.display = "block";
+                document.getElementById("Label92").style.display = "block";
+                document.getElementById("Label3333379").style.display = "block";
+            }
+        }
+
+        function button6Click(event) {
+            event.preventDefault();
+            document.getElementById("tbdotmet1").value = 4.9;
+            document.getElementById("tbntanquesmet1").value = 1.9;
+            document.getElementById("tbaltsedmet1").value = 0.65;
+            document.getElementById("tbaltbordlibmet1").value = 1.1;
+            document.getElementById("tbaltbordlibmet2").value = 3;
+            document.getElementById("tbaltbordlibmet3").value = 0.9;
+            document.getElementById("tbaltbordlibmet4").value = 0.1;
+            document.getElementById("tbaltbordlibmet7").value = 5;
+        }
+
+        function button10Click(event) {
+            event.preventDefault();
+            let fields = ["tbdotmet1", "tbntanquesmet1", "tbaltsedmet1", "tbaltbordlibmet1", "tbaltbordlibmet2", "tbaltbordlibmet3", "tbaltbordlibmet4", "tbaltbordlibmet7"];
+
+            fields.forEach(id => {
+                let element = document.getElementById(id);
+                element.value = "";
+                element.classList.add("white-back");
+            });
+
+            document.getElementById("tbQprommet1").style.display = "none";
+            document.getElementById("tbQprommet2").style.display = "none";
+            document.getElementById("tbVcompmet1").style.display = "none";
+            document.getElementById("tbVcompmet2").style.display = "none";
+            document.getElementById("tbVemermet1").style.display = "none";
+
+            document.getElementById("Label8").style.display = "none";
+            document.getElementById("Label91").style.display = "none";
+            document.getElementById("Label3333378").style.display = "none";
+            document.getElementById("Label92").style.display = "none";
+            document.getElementById("Label3333379").style.display = "none";
+        }
+    </script>
+</body>
+</html>

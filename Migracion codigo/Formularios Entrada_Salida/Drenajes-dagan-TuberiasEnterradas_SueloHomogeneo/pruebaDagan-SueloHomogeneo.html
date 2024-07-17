@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulación de DaganCerHom</title>
+    <style>
+        .error {
+            background-color: red;
+        }
+        .results {
+            color: red;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulación de DaganCerHom</h1>
+
+    <label for="tbhabmet1">Habmet1:</label>
+    <input type="text" id="tbhabmet1"><br>
+
+    <label for="tbdotmet1">Dotmeto1:</label>
+    <input type="text" id="tbdotmet1"><br>
+
+    <label for="tbntanquesmet1">Ntanquesmet1:</label>
+    <input type="text" id="tbntanquesmet1"><br>
+
+    <label for="tbaltsedmet1">Altsedmet1:</label>
+    <input type="text" id="tbaltsedmet1"><br>
+
+    <label for="tbaltbordlibmet1">Altbordlibmet1:</label>
+    <input type="text" id="tbaltbordlibmet1"><br>
+
+    <label for="tbaltbordlibmet2">Altbordlibmet2:</label>
+    <input type="text" id="tbaltbordlibmet2"><br><br>
+
+    <label for="DropDownList2">Aproximación decimal de resultados:</label>
+    <select id="DropDownList2">
+        <option value="0">0 decimales</option>
+        <option value="1">1 decimal</option>
+        <option value="2">2 decimales</option>
+        <option value="3">3 decimales</option>
+        <option value="4">4 decimales</option>
+    </select><br><br>
+
+    <button id="button1">Calcular</button>
+    <button id="button6">Ejemplo</button>
+    <button id="button10">Borrar</button><br><br>
+
+    <h2 id="resultadosTitulo" class="hidden">Resultados</h2><br>
+
+    <label id="Label8" class="hidden">Qprommet1:</label>
+    <input type="text" id="tbQprommet1" class="hidden results"><br><br>
+
+    <label id="Label91" class="hidden">Vcompmet1:</label>
+    <input type="text" id="tbVcompmet1" class="hidden results"><br><br>
+
+    <label id="Label92" class="hidden">Vemermet1:</label>
+    <input type="text" id="tbVemermet1" class="hidden results"><br><br>
+
+    <script src="logDaganSueloHomogeneo.js"></script>
+</body>
+</html>
