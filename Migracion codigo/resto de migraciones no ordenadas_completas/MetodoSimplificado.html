@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Sifón</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .red {
+            background-color: red;
+        }
+        .white {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="tbQanclajesifon">Caudal de diseño (m³/s) = </label>
+        <input type="text" id="tbQanclajesifon"><br>
+
+        <label for="tbdiamanclajesifon">Diámetro del ducto (m) = </label>
+        <input type="text" id="tbdiamanclajesifon"><br>
+
+        <label for="tbpesesptubo">Peso específico del material del tubo (T/m³) = </label>
+        <input type="text" id="tbpesesptubo"><br>
+
+        <label for="tbesftrabajacero">Esfuerzo de trabajo del acero (T/m²) = </label>
+        <input type="text" id="tbesftrabajacero"><br>
+
+        <label for="tbpresjuntagarrib">Presión en la junta de aguas arriba (T/m²) = </label>
+        <input type="text" id="tbpresjuntagarrib"><br>
+
+        <label for="tbpreshidrostanclaj">Presión hidrostática en el anclaje (T/m²) = </label>
+        <input type="text" id="tbpreshidrostanclaj"><br>
+
+        <label for="tbpresjuntagabajo">Presión en la junta de aguas abajo (T/m²) = </label>
+        <input type="text" id="tbpresjuntagabajo"><br>
+
+        <label for="tblonghorl1">Longitud horizontal L1 (m) = </label>
+        <input type="text" id="tblonghorl1"><br>
+
+        <label for="tblonghorl2">Longitud horizontal L2 (m) = </label>
+        <input type="text" id="tblonghorl2"><br>
+
+        <label for="tbbeta1">Ángulo tubería aguas arriba con horizontal (grados) = </label>
+        <input type="text" id="tbbeta1"><br>
+
+        <label for="tbbeta2">Ángulo tubería aguas abajo con horizontal (grados) = </label>
+        <input type="text" id="tbbeta2"><br>
+        
+        <label for="tbfanclaje">Rozamiento (anclaje vs tubo) = </label>
+        <input type="text" id="tbfanclaje"><br>
+
+        <label for="tbBanclaj">Base del anclaje (m) = </label>
+        <input type="text" id="tbBanclaj"><br>
+
+        <label for="tbHanclaj">Altura del anclaje (m) = </label>
+        <input type="text" id="tbHanclaj"><br>
+
+        <label for="DropDownList5">DropDownList5:</label>
+        <select id="DropDownList5">
+            <option value="0">Seleccionar</option>
+            <option value="1">Baja</option>
+            <option value="2">Sube</option>
+        </select><br>
+
+        <label for="DropDownList6">DropDownList6:</label>
+        <select id="DropDownList6">
+            <option value="0">Seleccionar</option>
+            <option value="1">Baja</option>
+            <option value="2">Sube</option>
+        </select><br>
+
+        <button id="Button4">Calcular</button>
+        <button id="Button38">Ejemplos</button>
+        <button id="Button39">Eliminar</button>
+    </div>
+
+    <div id="resultados">
+        <label id="label145" class="hidden">Espesor mínimo requerido (m) =</label>
+        <input type="text" id="tbespminanclaj" class="hidden"><br>
+
+        <label id="label3333289" class="hidden">Ingrese espesor mínimo usado (m) =</label>
+        <input type="text" id="tbespusadanclaj" class="hidden"><br>
+
+        <button id="Button42" class="hidden">Comprobar Anclaje</button>
+    </div>
+    <div id="resultados_1">
+    <div id="RESULTADOS FUERZAS CALCULADAS">RESULTADOS FUERZAS CALCULADAS</div>
+    <label id="label3333296" class="hidden">F1 = </label>
+    <input type="text" id="tbf1anclaj" class="hidden"><br>
+    <label id="label3333297" class="hidden">F2 = </label>
+    <input type="text" id="tbf2anclaj" class="hidden" /><br>
+    <label id="label3333298" class="hidden">F3 = </label>
+    <input type="text" id="tbf3anclaj" class="hidden" /><br>
+    <label id="label3333299" class="hidden">F4 = </label>
+    <input type="text" id="tbf4anclaj" class="hidden" /><br>
+    <label id="label3333300" class="hidden">F5 = </label>
+    <input type="text" id="tbf5anclaj" class="hidden" /><br>
+    <label id="label3333301" class="hidden">F6 = </label>
+    <input type="text" id="tbf6anclaj" class="hidden" /><br>
+    <label id="label3333302" class="hidden">F7 = </label>
+    <input type="text" id="tbf7anclaj" class="hidden" /><br>
+    <label id="label3333303" class="hidden">F8 = </label>
+    <input type="text" id="tbf8anclaj" class="hidden" /><br>
+    <label id="Label3333304" class="hidden">F9 = </label>
+    <input type="text" id="tbf9anclaj" class="hidden" /><br>
+    <label id="Label3333305" class="hidden"> F10 = </label>
+    <input type="text" id="tbf10anclaj" class="hidden" /><br>
+
+    <div id="RESULTADOS DE LAS COMPONENTES DE LAS FUERZAS FINALES">RESULTADOS DE LAS COMPONENTES DE LAS FUERZAS FINALES</div>
+
+    <label for="tbfhanclaj">Fuerza horizontal FH = </label>
+    <input type="text" id="tbfhanclaj" readonly><br>
+    
+    <label for="tbfvanclaj">Fuerza vertical FV = </label>
+    <input type="text" id="tbfvanclaj" readonly><br>
+    
+    <label for="tbwanclaj">W (Tn) = </label>
+    <input type="text" id="tbwanclaj" readonly><br>
+    
+    <label for="Label3333307" id="Label3333307"></label><br>
+    
+    <label for="tbvcanclaj">Volumen de concreto (m³) = </label>
+    <input type="text" id="tbvcanclaj" readonly><br>
+
+    <div id="DIMENSIONES DEL ANCLAJE">DIMENSIONES DEL ANCLAJE</div>
+    
+    <label for="tbprofanclaj">Profundidad del anclaje mínimo (m) = </label>
+    <input type="text" id="tbprofanclaj" readonly><br>
+    
+    <label for="tbvcqanclaj">Volumen del tubo dentro del anclaje (m³) = </label>
+    <input type="text" id="tbvcqanclaj" readonly><br>
+    
+    <label for="tbwananclaj">Peso del anclaje (Tn) = </label>
+    <input type="text" id="tbwananclaj" readonly><br>
+
+    <label for="tbsfhanclaj">Suma de fuerzas horizontales (Tn) = </label>
+    <input type="text" id="tbsfhanclaj" readonly><br>
+
+    <label for="tbfewanclaj">Peso total del anclaje (f = 0.3) f x W = </label>
+    <input type="text" id="tbfewanclaj" readonly><br>
+
+    <label for="Label3333315" id="Label3333315"></label><br>
+
+    <div id="COMPROBACIÓN DE LA CAPACIDAD PORTANTE DEL SUELO">COMPROBACIÓN DE LA CAPACIDAD PORTANTE DEL SUELO</div>
+
+    <label for="tbcpsanclaj">Al suelo se transmiten (T/m²) = </label>
+    <input type="text" id="tbcpsanclaj" readonly><br>
+
+    <label for="tbrmanclaj">La resultante pasa por (m) = </label>
+    <input type="text" id="tbrmanclaj" readonly><br>
+
+    <label for="Label3333319" id="Label3333319"></label><br>
+
+    </div>
+    <script>
+        document.getElementById("Button4").addEventListener("click", function() {
+            let Qsifon, nsifon, Ssifon;
+            let DDiseñoCauce, Y1DiseñoCauce;
+            let Velocidadsifon, L1DiseñoCauce, FroudDiseñoCauce;
+            let velanclajesifon, dintsifon, Cotasifon, areaanclajesifon;
+            let L1anclaj, L2anclaj, Beta1, Beta2, numtramos, diamanclaje;
+            const tbQanclajesifon = document.getElementById("tbQanclajesifon");
+            const tbpesesptubo = document.getElementById("tbpesesptubo");
+            const tbesftrabajacero = document.getElementById("tbesftrabajacero");
+            const tbpreshidrostanclaj = document.getElementById("tbpreshidrostanclaj");
+            const tbpresjuntagabajo = document.getElementById("tbpresjuntagabajo");
+            const tbpresjuntagarrib = document.getElementById("tbpresjuntagarrib");
+            const tbfanclaje = document.getElementById("tbfanclaje");
+            const tbdiamanclajesifon = document.getElementById("tbdiamanclajesifon");
+            const tblonghorl1 = document.getElementById("tblonghorl1");
+            const tblonghorl2 = document.getElementById("tblonghorl2");
+            const tbbeta1 = document.getElementById("tbbeta1");
+            const tbbeta2 = document.getElementById("tbbeta2");
+            const tbBanclaj = document.getElementById("tbBanclaj");
+            const tbHanclaj = document.getElementById("tbHanclaj");
+            const DropDownList5 = document.getElementById("DropDownList5");
+            const DropDownList6 = document.getElementById("DropDownList6");
+            const tbespminanclaj = document.getElementById("tbespminanclaj");
+            const label145 = document.getElementById("label145");
+            const label3333289 = document.getElementById("label3333289");
+            const tbespusadanclaj = document.getElementById("tbespusadanclaj");
+            const Button42 = document.getElementById("Button42");
+
+            if (tbBanclaj.value !== "" && tbHanclaj.value !== "" && tbQanclajesifon.value !== "" && tbpesesptubo.value !== "" && tbesftrabajacero.value !== "" && tbpresjuntagabajo.value !== "" && tbpresjuntagarrib.value !== "" && tbpreshidrostanclaj.value !== "" && tbfanclaje.value !== "" && tbdiamanclajesifon.value !== "" && tblonghorl1.value !== "" && tblonghorl2.value !== "" && tbbeta1.value !== "" && tbbeta2.value !== "" && DropDownList5.value !== "0" && DropDownList6.value !== "0") {
+
+                // Reset background colors
+                tbQanclajesifon.classList.remove("red");
+                tbpesesptubo.classList.remove("red");
+                tbesftrabajacero.classList.remove("red");
+                tbpreshidrostanclaj.classList.remove("red");
+                tbpresjuntagabajo.classList.remove("red");
+                tbpresjuntagarrib.classList.remove("red");
+                tbfanclaje.classList.remove("red");
+                tbdiamanclajesifon.classList.remove("red");
+                tblonghorl1.classList.remove("red");
+                tblonghorl2.classList.remove("red");
+                tbbeta1.classList.remove("red");
+                tbbeta2.classList.remove("red");
+                tbBanclaj.classList.remove("red");
+                tbHanclaj.classList.remove("red");
+
+                Qsifon = parseFloat(tbQanclajesifon.value);
+                const pesoesptubo = parseFloat(tbpesesptubo.value);
+                const esftrabajacer = parseFloat(tbesftrabajacero.value);
+                const presjuntagabajo = parseFloat(tbpresjuntagabajo.value);
+                const presjuntagarriba = parseFloat(tbpresjuntagarrib.value);
+                const preshidrostanlclaje = parseFloat(tbpreshidrostanclaj.value);
+                const fanclacje = parseFloat(tbfanclaje.value);
+                diamanclaje = parseFloat(tbdiamanclajesifon.value);
+                L1anclaj = parseFloat(tblonghorl1.value);
+                L2anclaj = parseFloat(tblonghorl2.value);
+                Beta1 = parseFloat(tbbeta1.value);
+                Beta2 = parseFloat(tbbeta2.value);
+
+                const areaanclaj = (Math.PI * Math.pow(diamanclaje, 2)) / 4;
+                const velanclaj = Qsifon / areaanclaj;
+
+                const f1anclaj = areaanclaj * 1.25 * preshidrostanlclaje;
+                const f2anclaj = Qsifon * velanclaj / 9.81;
+
+                const espminreq = 1.25 * preshidrostanlclaje * diamanclaje / (2 * esftrabajacer) + (((diamanclaje / 0.0254 + 20) / 400) * 0.0254);
+
+                label145.classList.remove("hidden");
+                tbespminanclaj.classList.remove("hidden");
+                tbespminanclaj.value = espminreq.toFixed(4);
+                tbespminanclaj.style.color = "red";
+
+                label3333289.classList.remove("hidden");
+                tbespusadanclaj.classList.remove("hidden");
+                Button42.classList.remove("hidden");
+
+            } else {
+                const inputs = [tbQanclajesifon, tbpesesptubo, tbesftrabajacero, tbpreshidrostanclaj, tbpresjuntagabajo, tbpresjuntagarrib, tbfanclaje, tbdiamanclajesifon, tblonghorl1, tblonghorl2, tbbeta1, tbbeta2, tbBanclaj, tbHanclaj];
+                inputs.forEach(input => {
+                    if (input.value === "") {
+                        input.classList.add("red");
+                    }
+                });
+            }
+        });
+        document.getElementById("Button38").addEventListener("click", function() {
+    document.getElementById("tbQanclajesifon").value = 1.039;
+    document.getElementById("tbdiamanclajesifon").value = 0.8;
+    document.getElementById("tbpesesptubo").value = 7.8;
+    document.getElementById("tbesftrabajacero").value = 12000;
+    document.getElementById("tbpresjuntagarrib").value = 1.2;
+    document.getElementById("tbpreshidrostanclaj").value = 2.714;
+    document.getElementById("tbpresjuntagabajo").value = 14.472;
+    document.getElementById("tblonghorl1").value = 13.36;
+    document.getElementById("tblonghorl2").value = 20;
+    document.getElementById("tbbeta1").value = 6.93;
+    document.getElementById("DropDownList5").value = 1;
+    document.getElementById("tbbeta2").value = 30.84;
+    document.getElementById("DropDownList6").selectedIndex = 1;
+    document.getElementById("tbfanclaje").value = 0.5;
+    document.getElementById("tbBanclaj").value = 6;
+    document.getElementById("tbHanclaj").value = 5;
+
+    document.getElementById("tbespusadanclaj").value = 0.006;
+});
+document.getElementById('Button42').addEventListener('click', function () {
+    let Qsifon = parseFloat(document.getElementById('tbQanclajesifon').value);
+    let pesoesptubo = parseFloat(document.getElementById('tbpesesptubo').value);
+    let esftrabajacer = parseFloat(document.getElementById('tbesftrabajacero').value);
+    let presjuntagabajo = parseFloat(document.getElementById('tbpresjuntagabajo').value);
+    let presjuntagarriba = parseFloat(document.getElementById('tbpresjuntagarrib').value);
+    let preshidrostanlclaje = parseFloat(document.getElementById('tbpreshidrostanclaj').value);
+    let fanclacje = parseFloat(document.getElementById('tbfanclaje').value);
+    let diamanclaje = parseFloat(document.getElementById('tbdiamanclajesifon').value);
+    let L1anclaj = parseFloat(document.getElementById('tblonghorl1').value);
+    let L2anclaj = parseFloat(document.getElementById('tblonghorl2').value);
+    let Beta1 = parseFloat(document.getElementById('tbbeta1').value);
+    let Beta2 = parseFloat(document.getElementById('tbbeta2').value);
+    let espminusad = parseFloat(document.getElementById('tbespusadanclaj').value);
+    
+    let areaanclaj = (Math.PI * (diamanclaje ** 2)) / 4;
+    let velanclaj = Qsifon / areaanclaj;
+    let f1anclaj = areaanclaj * 1.25 * preshidrostanlclaje;
+    let f2anclaj = Qsifon * velanclaj / 9.81;
+
+    let espminreq = 1.25 * preshidrostanlclaje * diamanclaje / (2 * esftrabajacer) + (((diamanclaje / 0.0254 + 20) / 400) * 0.0254);
+    document.getElementById('tbespminanclaj').value = espminreq.toFixed(4);
+
+    let DEX = diamanclaje + espminusad * 2;
+    let WTUBO1 = Math.PI / 4 * (DEX ** 2 - diamanclaje ** 2) * L1anclaj * pesoesptubo;
+    let WAGUA1 = Math.PI * (diamanclaje ** 2) * L1anclaj / 4;
+    let W1 = WTUBO1 * (Math.sin(Beta1 * Math.PI / 180)) + WAGUA1 * (Math.sin(Beta1 * Math.PI / 180));
+    let WTUBO2 = Math.PI / 4 * (DEX ** 2 - diamanclaje ** 2) * L2anclaj * pesoesptubo;
+    let WAGUA2 = Math.PI * (diamanclaje ** 2) * L2anclaj / 4;
+    let W2 = WTUBO2 * (Math.sin(Beta2 * Math.PI / 180)) + WAGUA2 * (Math.sin(Beta2 * Math.PI / 180));
+    let f3anclaj = W1;
+    let f4anclaj = W2;
+    let f5anclaj = fanclacje * (Math.cos(Beta1 * Math.PI / 180)) / 2 * (WTUBO1 + WAGUA1);
+    let f6anclaj = fanclacje * (Math.cos(Beta2 * Math.PI / 180)) / 2 * (WTUBO2 + WAGUA2);
+    let f7anclaj = 0.745 * Math.PI * DEX / 12;
+    let f8anclaj = f7anclaj;
+    let f9anclaj = Math.PI / 4 * (DEX ** 2 - diamanclaje ** 2) * presjuntagarriba;
+    let f10anclaj = Math.PI / 4 * (DEX ** 2 - diamanclaje ** 2) * presjuntagabajo;
+    const labelIds = [
+        'label3333296', 'label3333297',
+        'label3333298', 'label3333299',
+        'label3333300', 'label3333301',
+        'label3333302', 'label3333303',
+        'Label3333304', 'Label3333305'
+    ];
+
+    // IDs de los campos de texto con sus valores
+    const textBoxData = [
+        { id: 'tbf1anclaj', value: f1anclaj },
+        { id: 'tbf2anclaj', value: f2anclaj },
+        { id: 'tbf3anclaj', value: f3anclaj },
+        { id: 'tbf4anclaj', value: f4anclaj },
+        { id: 'tbf5anclaj', value: f5anclaj },
+        { id: 'tbf6anclaj', value: f6anclaj },
+        { id: 'tbf7anclaj', value: f7anclaj },
+        { id: 'tbf8anclaj', value: f8anclaj },
+        { id: 'tbf9anclaj', value: f9anclaj },
+        { id: 'tbf10anclaj', value: f10anclaj }
+    ];
+
+    // Hacer visibles los labels
+    labelIds.forEach(id => {
+        document.getElementById(id).style.display = 'block';
+    });
+
+    // Actualizar los campos de texto
+    textBoxData.forEach(({ id, value }) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = 'block';
+            element.value = value.toFixed(4);
+            element.style.color = 'red';
+        }
+    });
+
+    let SFH, SFV;
+    if (document.getElementById('DropDownList5').value == 1 && document.getElementById('DropDownList6').value == 2) {
+        SFH = (f1anclaj + f5anclaj - f9anclaj) * (Math.cos(Beta1 * Math.PI / 180)) + (f10anclaj - f2anclaj - f6anclaj) * (Math.cos(Beta2 * Math.PI / 180));
+        SFV = (f1anclaj + f5anclaj - f9anclaj) * (Math.sin(Beta1 * Math.PI / 180)) + (f2anclaj + f6anclaj - f10anclaj) * (Math.sin(Beta2 * Math.PI / 180));
+    } else if (document.getElementById('DropDownList5').value == 1 && document.getElementById('DropDownList6').value == 1) {
+        SFH = (f1anclaj + f5anclaj - f9anclaj) * (Math.cos(Beta1 * Math.PI / 180)) + (f6anclaj - f2anclaj - f10anclaj) * (Math.cos(Beta2 * Math.PI / 180));
+        SFV = (f1anclaj + f5anclaj - f9anclaj) * (Math.sin(Beta1 * Math.PI / 180)) + (f6anclaj - f10anclaj - f2anclaj) * (Math.sin(Beta2 * Math.PI / 180));
+    } else if (document.getElementById('DropDownList5').value == 2 && document.getElementById('DropDownList6').value == 2) {
+        SFH = (f1anclaj - f5anclaj + f9anclaj) * (Math.cos(Beta1 * Math.PI / 180)) + (f10anclaj - f2anclaj - f6anclaj) * (Math.cos(Beta2 * Math.PI / 180));
+        SFV = (f5anclaj - f1anclaj - f9anclaj) * (Math.sin(Beta1 * Math.PI / 180)) + (f2anclaj + f6anclaj - f10anclaj) * (Math.sin(Beta2 * Math.PI / 180));
+    } else if (document.getElementById('DropDownList5').value == 2 && document.getElementById('DropDownList6').value == 1) {
+        SFH = (f1anclaj - f5anclaj + f9anclaj) * (Math.cos(Beta1 * Math.PI / 180)) + (f6anclaj - f10anclaj - f2anclaj) * (Math.cos(Beta2 * Math.PI / 180));
+        SFV = (f5anclaj - f1anclaj - f9anclaj) * (Math.sin(Beta1 * Math.PI / 180)) + (f6anclaj - f10anclaj - f2anclaj) * (Math.sin(Beta2 * Math.PI / 180));
+    }
+    document.getElementById('tbfhanclaj').value = SFH.toFixed(4);
+    document.getElementById('tbfvanclaj').value = SFV.toFixed(4);
+
+    const dropdown = document.getElementById('DropDownList5');
+    const selectedIndex = dropdown.selectedIndex;
+    if (selectedIndex == 1) {
+        SFH = SFH * (-1);
+    }
+    const WD = (SFH * (-1)) / 0.3 - SFV;
+    
+    document.getElementById('tbwanclaj').value = WD.toFixed(4);
+
+    let Label3333307 = document.getElementById('Label3333307');
+
+    if (WD < 0) {
+        Label3333307.innerText = "No se requiere anclaje";
+    } else {
+        Label3333307.innerText = "Se requiere anclaje";
+    }
+    
+    let VC = WD / 2.2 * 1.2;
+    document.getElementById('tbvcanclaj').value = VC.toFixed(4);
+
+    let Banclaj = parseFloat(document.getElementById('tbBanclaj').value);
+    let Hanclaj = parseFloat(document.getElementById('tbHanclaj').value);
+    let PROF = VC / Banclaj / Hanclaj;
+    document.getElementById('tbprofanclaj').value = PROF.toFixed(4);
+    let VT = Math.PI / 4 * DEX ** 2 * ((Banclaj / 2 / (Math.cos(Beta1 * Math.PI / 180))) + (Banclaj / 2 / (Math.cos(Beta2 * Math.PI / 180))));
+    document.getElementById('tbvcqanclaj').value = VT.toFixed(4);
+    let WAN = 2.2 * ((Banclaj * Hanclaj * PROF) - VT) + SFV
+    document.getElementById('tbwananclaj').value = WAN.toFixed(4);
+    document.getElementById('tbsfhanclaj').value = SFH.toFixed(4);
+    let FEW = 0.3 * WAN;
+    document.getElementById('tbfewanclaj').value = FEW.toFixed(4);
+    if (Math.abs(SFH) < FEW) {
+        document.getElementById("Label3333315").style.display = "block";
+        document.getElementById("Label3333315").textContent = "Si cumple que FH<(f*W)";
+        document.getElementById("Label3333315").style.color = "red";
+    } else {
+        document.getElementById("Label3333315").style.display = "block";
+        document.getElementById("Label3333315").textContent = "Cambie el diseño del anclaje";
+        document.getElementById("Label3333315").style.color = "red";
+    }
+    let CPS = WAN / Banclaj / PROF;
+    document.getElementById('tbcpsanclaj').value = CPS.toFixed(4);
+
+    let MA = WAN * Banclaj / 2 + SFH * (0.38 + diamanclaje / 2);
+    let RM = MA / WAN;
+    document.getElementById('tbrmanclaj').value = RM.toFixed(4);
+
+    if (RM < Banclaj / 3 || RM == Banclaj / 3) {
+        document.getElementById("Label3333319").style.display = "block";
+        document.getElementById("Label3333319").textContent = "La resultante no se encuentra en el tercio medio de la base, debe rediseñar";
+        document.getElementById("Label3333319").style.color = "red";
+    } else {
+        document.getElementById("Label3333319").style.display = "block";
+        document.getElementById("Label3333319").textContent = "El diseño está correcto";
+        document.getElementById("Label3333319").style.color = "red";
+    }
+});
+document.getElementById("Button39").addEventListener("click", function() {
+        // Lista de IDs de los campos que deseas limpiar
+        const idsToClear = [
+            "tbQanclajesifon", "tbdiamanclajesifon", "tbpesesptubo",
+            "tbesftrabajacero", "tbpresjuntagarrib", "tbpreshidrostanclaj",
+            "tbpresjuntagabajo", "tblonghorl1", "tblonghorl2",
+            "tbbeta1", "tbbeta2", "tbfanclaje", "tbBanclaj", "tbHanclaj",
+            "tbespminanclaj", "tbespusadanclaj"
+        ];
+
+        // Limpiar los campos de entrada
+        idsToClear.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = "";
+                element.classList.remove("red");
+            }
+        });
+
+        // Limpiar el dropdown
+        const dropdowns = ["DropDownList5", "DropDownList6"];
+        dropdowns.forEach(id => {
+            const dropdown = document.getElementById(id);
+            if (dropdown) {
+                dropdown.selectedIndex = 0; // Resetear al primer valor
+            }
+        });
+
+        // Ocultar resultados
+        document.querySelectorAll('#resultados input').forEach(input => {
+            input.classList.add("hidden");
+        });
+
+        document.querySelectorAll('#resultados label').forEach(label => {
+            label.classList.add("hidden");
+        });
+         
+        // Ocultar botón de comprobar anclaje
+        const Button42 = document.getElementById("Button42");
+        if (Button42) {
+            Button42.classList.add("hidden");
+        }
+    });
+</script>
+</body>
+</html>

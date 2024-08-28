@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Desripiador</title>
+    <style>
+        .hidden { display: none; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <form id="desripiadorForm">
+        <label for="tbcaudaldesripiador">Caudal Desripiador:</label>
+        <input type="text" id="tbcaudaldesripiador"><br>
+
+        <label for="correcsumerdesr">Corrección de Sumersión:</label>
+        <select id="correcsumerdesr">
+            <option value="0">Seleccione...</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+        </select><br>
+
+        <label for="sumersiondesr">Sumersión:</label>
+        <select id="sumersiondesr">
+            <option value="0">Seleccione...</option>
+            <option value="1">Opción 1</option>
+            <option value="2">Opción 2</option>
+            <option value="3">Opción 3</option>
+        </select><br>
+
+        <label for="tbldrdesripiador">Largo Desripiador:</label>
+        <input type="text" id="tbldrdesripiador"><br>
+
+        <label for="tbkdesripiador">K Desripiador:</label>
+        <input type="text" id="tbkdesripiador"><br>
+
+        <label for="tbz1desripiador">Z1 Desripiador:</label>
+        <input type="text" id="tbz1desripiador"><br>
+
+        <label for="tbHndesripiador">Hn Desripiador:</label>
+        <input type="text" id="tbHndesripiador"><br>
+
+        <label for="tbp2desripiador">P2 Desripiador:</label>
+        <input type="text" id="tbp2desripiador"><br>
+
+        <label for="tbP3desripiador">P3 Desripiador:</label>
+        <input type="text" id="tbP3desripiador"><br>
+
+        <label for="Tbz2desripiador">Z2 Desripiador:</label>
+        <input type="text" id="Tbz2desripiador"><br>
+
+        <button type="button" onclick="calcularDesripiador()">Calcular</button>
+        <button type="button" onclick="establecerValores()">Establecer Valores</button>
+        <button onclick="resetForm()">Resetear Formulario</button>
+    </form>
+
+    <div id="resultados" class="hidden">
+        <p id="tbhvrnvert" class="error"></p>
+        <p id="tbcoefbazdesr" class="error"></p>
+        <p id="tbkonovdesr" class="error"></p>
+        <p id="tbcoefpromdesr" class="error"></p>
+        <p id="tbcorrecbazdesr" class="error"></p>
+        <p id="tbcorrecvilledesr" class="error"></p>
+        <p id="tbcorrecpromdesr" class="error"></p>
+        <p id="tbhvrndesr" class="error"></p>
+    </div>
+    <label for="tbY1desr" class="resultado">Y1:</label>
+    <div id="tbY1desr" class="resultado"></div>
+    <label for="tbY2desr" class="resultado">Y2:</label>
+    <div id="tbY2desr" class="resultado"></div><br>
+    <label for="tblongrespavldesr" class="resultado">Longitud Pavlovski (m):</label>
+    <div id="tblongrespavldesr" class="resultado"></div><br>
+        <label for="tblongressafdesr" class="resultado">Longitud Safranetz (m):</label>
+        <div id="tblongressafdesr" class="resultado"></div><br>
+        
+        <label for="tblongresbkhdesr" class="resultado">Longitud Bakhmetev (m):</label>
+        <div id="tblongresbkhdesr" class="resultado"></div><br>
+        
+        <label for="tblongdesripiador" class="resultado">Longitud Desripiador (m):</label>
+        <div id="tblongdesripiador" class="resultado"></div>
+        <div>
+            <label for="tbY1desripiador">Y1 Desripiador:</label>
+            <span id="tbY1desripiador" class="result" style="visibility:hidden;"></span>
+        </div>
+        <div>
+            <label for="tbY2desripiador">Y2 Desripiador:</label>
+            <span id="tbY2desripiador" class="result" style="visibility:hidden;"></span>
+        </div>
+  
+    <script>
+        function calcularDesripiador() {
+            var caudaldesripiador = parseFloat(document.getElementById('tbcaudaldesripiador').value);
+            var Hndesripiador = parseFloat(document.getElementById('tbHndesripiador').value);
+            var p2desripiador = parseFloat(document.getElementById('tbp2desripiador').value);
+            var p3desripiador = parseFloat(document.getElementById('tbP3desripiador').value);
+            var z1desripiador = parseFloat(document.getElementById('tbz1desripiador').value);
+            var z2desripiador = parseFloat(document.getElementById('Tbz2desripiador').value);
+            var ldrdesripiador = parseFloat(document.getElementById('tbldrdesripiador').value);
+            var kdesripiador = parseFloat(document.getElementById('tbkdesripiador').value);
+
+            var sumersiondesr = parseInt(document.getElementById('sumersiondesr').value);
+            var correcsumerdesr = parseInt(document.getElementById('correcsumerdesr').value);
+
+            if (!isNaN(caudaldesripiador) && !isNaN(Hndesripiador) && !isNaN(p2desripiador) &&
+                !isNaN(p3desripiador) && !isNaN(z1desripiador) && !isNaN(z2desripiador) &&
+                !isNaN(ldrdesripiador) && !isNaN(kdesripiador) && sumersiondesr > 0 && correcsumerdesr > 0) {
+
+                var tbhvrnvert = Hndesripiador - z1desripiador;
+                document.getElementById('tbhvrnvert').innerText = tbhvrnvert.toFixed(3);
+
+                var Modesr;
+                switch (sumersiondesr) {
+                    case 1:
+                        Modesr = (1.794 + (0.0133 / Hndesripiador)) * (1 + (0.55 * Math.pow(Hndesripiador / (Hndesripiador + p2desripiador), 2)));
+                        document.getElementById('tbcoefbazdesr').innerText = Modesr.toFixed(3);
+                        document.getElementById('tbkonovdesr').innerText = (0).toFixed(3);
+                        document.getElementById('tbcoefpromdesr').innerText = (0).toFixed(3);
+                        break;
+                    case 2:
+                        Modesr = (0.407 + ((0.045 * Hndesripiador) / (Hndesripiador + p2desripiador))) *
+                                 (1 + (0.285 * Math.pow(Hndesripiador / (Hndesripiador + p2desripiador), 2))) *
+                                 Math.sqrt(2 * 9.81);
+                        document.getElementById('tbkonovdesr').innerText = Modesr.toFixed(3);
+                        document.getElementById('tbcoefbazdesr').innerText = (0).toFixed(3);
+                        document.getElementById('tbcoefpromdesr').innerText = (0).toFixed(3);
+                        break;
+                    case 3:
+                        var mode1 = (1.794 + (0.0133 / Hndesripiador)) * (1 + (0.55 * Math.pow(Hndesripiador / (Hndesripiador + p2desripiador), 2)));
+                        var mode2 = (0.407 + ((0.045 * Hndesripiador) / (Hndesripiador + p2desripiador))) *
+                                    (1 + (0.285 * Math.pow(Hndesripiador / (Hndesripiador + p2desripiador), 2))) *
+                                    Math.sqrt(2 * 9.81);
+                        Modesr = (mode1 + mode2) / 2;
+                        document.getElementById('tbcoefbazdesr').innerText = mode1.toFixed(3);
+                        document.getElementById('tbkonovdesr').innerText = mode2.toFixed(3);
+                        document.getElementById('tbcoefpromdesr').innerText = Modesr.toFixed(3);
+                        break;
+                }
+
+                var Sodesr;
+                switch (correcsumerdesr) {
+                    case 1:
+                        Sodesr = 1.05 * (1 + 0.2 * ((Hndesripiador - z2desripiador) / p3desripiador)) * Math.pow(z2desripiador / Hndesripiador, 1/3);
+                        document.getElementById('tbcorrecbazdesr').innerText = Sodesr.toFixed(3);
+                        document.getElementById('tbcorrecvilledesr').innerText = (0).toFixed(3);
+                        document.getElementById('tbcorrecpromdesr').innerText = (0).toFixed(3);
+                        break;
+                    case 2:
+                        Sodesr = Math.pow(1 - ((Hndesripiador - z2desripiador) / p3desripiador), 3/2) ** 0.383;
+                        document.getElementById('tbcorrecvilledesr').innerText = Sodesr.toFixed(3);
+                        document.getElementById('tbcorrecbazdesr').innerText = (0).toFixed(3);
+                        document.getElementById('tbcorrecpromdesr').innerText = (0).toFixed(3);
+                        break;
+                    case 3:
+                        var valor1 = 1.05 * (1 + 0.2 * ((Hndesripiador - z2desripiador) / p3desripiador)) * Math.pow(z2desripiador / Hndesripiador, 1/3);
+                        var valor2 = Math.pow(1 - ((Hndesripiador - z2desripiador) / p3desripiador), 3/2) ** 0.383;
+                        Sodesr = (valor1 + valor2) / 2;
+                        document.getElementById('tbcorrecbazdesr').innerText = valor1.toFixed(3);
+                        document.getElementById('tbcorrecvilledesr').innerText = valor2.toFixed(3);
+                        document.getElementById('tbcorrecpromdesr').innerText = Sodesr.toFixed(3);
+                        break;
+                }
+
+                var tbhvrndesr = (caudaldesripiador / (0.87 * Sodesr * Modesr * Math.pow(Hndesripiador,(3 / 2))));
+                document.getElementById('tbhvrndesr').innerText = tbhvrndesr.toFixed(4);
+
+                document.getElementById('resultados').classList.remove('hidden');
+ 
+let Hrdesripiador = Hndesripiador + z1desripiador;
+
+let Y1 = (caudaldesripiador / (ldrdesripiador * kdesripiador * Math.pow((2 * 9.81 * ((p2desripiador + Hndesripiador) + z2desripiador)),0.5)));
+
+while (true) {
+    let valor1 = Y1;
+    let valor2 = caudaldesripiador / (ldrdesripiador * kdesripiador * Math.pow((2 * 9.81 * ((p2desripiador + Hndesripiador + z2desripiador) - valor1)),0.5));
+
+    if (valor2 < (0.99 * valor1) || valor2 > (1.01 * valor1)) {
+        Y1 += 0.0001;
+    } else {
+        break;
+    }
+}
+document.getElementById('tbY1desr').innerText = Y1.toFixed(4);
+let Y2 = 0.5 * Y1 * (-1 + Math.pow((1 + (8 * Math.pow(caudaldesripiador / ldrdesripiador, 2)) / (9.81 * Math.pow(Y1, 3))),0.5));
+document.getElementById('tbY2desr').innerText = Y2.toFixed(4);
+let ldr1  = 2.5 * ((1.9 * Y2) - Y1);
+document.getElementById('tblongrespavldesr').innerText = ldr1.toFixed(4);
+let ldr2 = 4.5 * Y2;
+document.getElementById('tblongressafdesr').innerText = ldr2.toFixed(4);
+let ldr3 = 5 * (Y2 - Y1);
+document.getElementById('tblongresbkhdesr').innerText = ldr3.toFixed(4);
+// Cálculo del número de Froude y velocidad
+let lefobs;
+let V1Desripiador = caudaldesripiador / (lefobs * Y1);
+
+    let F1Desripiador = V1Desripiador / Math.sqrt(9.81 * Y1);
+
+    // Calado y2
+
+
+    // Longitud del desripiado
+    let longdesripiador;
+
+if (ldr1 > ldr2) {
+    if (ldr1 > ldr3) {
+        longdesripiador = ldr1;
+    } else {
+        longdesripiador = ldr3;
+    }
+} else {
+    if (ldr2 > ldr3) {
+        longdesripiador = ldr2;
+    } else {
+        longdesripiador = ldr3;
+    }
+}
+    // Mostrar resultados
+    document.getElementById('tblongdesripiador').innerText = longdesripiador.toFixed(4);
+
+    // Mostrar las etiquetas con resultados
+    document.getElementById('tbY1desr').style.display = 'block';
+    document.getElementById('tbY2desr').style.display = 'block';
+    document.getElementById('tblongrespavldesr').style.display = 'block';
+    document.getElementById('tblongressafdesr').style.display = 'block';
+    document.getElementById('tblongresbkhdesr').style.display = 'block';
+    document.getElementById('tblongdesripiador').style.display = 'block';
+    document.getElementById('tbY1desripiador').style.visibility = 'visible';
+    document.getElementById('tbY2desripiador').style.visibility = 'visible';
+document.getElementById('tbY1desripiador').innerText = Y1.toFixed(4);
+document.getElementById('tbY2desripiador').innerText = Y2.toFixed(4);
+document.getElementById('tbY1desripiador').style.color = 'red';
+document.getElementById('tbY2desripiador').style.color = 'red';
+    const Hvr = Hndesripiador - z2Desripiador;
+// Calcular coef Konovalov
+const Mv = ((1.794 + (0.0133 / HrDesripiador)) * (1 + (0.55 * Math.pow((HrDesripiador / (HrDesripiador + p1Desripiador)), 2))) + (1.794 + (0.0133 / HrDesripiador)) * (1 + (0.55 * Math.pow((HrDesripiador / (HrDesripiador + p1Desripiador)), 2)))) / 2;
+const Sv = ((1.05 * (1 + 0.2 * (Hndesripiador / p2Desripiador)) * Math.pow((z2Desripiador / HrDesripiador), 1 / 3)) + Math.pow((1 - (Hndesripiador / HrDesripiador)), 3 / 2) * 0.385) / 2;
+
+// Calcular ancho vertedero de paso
+let bvDesirpiador = caudalDesripiador / (0.85 * Sv * Mv * Math.pow(Hndesripiador, 1.5));
+
+// Calcular ancho del desripiador
+let Adr = Math.round(bvDesirpiador, 1);
+
+if (lefobs > bvDesirpiador) Adr = 1.2 * lefobs;
+
+// Calcular altura de agua en el desripiador
+const ynDesripiador = Hndesripiador + p2Desripiador;
+} else {
+    alert("Por favor, ingrese todos los valores correctamente.");
+    document.getElementById('resultados').classList.add('hidden');
+}
+function resetForm() {
+    // Clear text inputs
+    document.getElementById('tbcaudaldesripiador').value = '';
+    document.getElementById('tbldrdesripiador').value = '';
+    document.getElementById('tbkdesripiador').value = '';
+    document.getElementById('tbz1desripiador').value = '';
+    document.getElementById('tbHndesripiador').value = '';
+    document.getElementById('tbp2desripiador').value = '';
+    document.getElementById('tbP3desripiador').value = '';
+    document.getElementById('Tbz2desripiador').value = '';
+
+    // Reset background color of text inputs
+    document.getElementById('tbcaudaldesripiador').style.backgroundColor = 'white';
+    document.getElementById('tbldrdesripiador').style.backgroundColor = 'white';
+    document.getElementById('tbkdesripiador').style.backgroundColor = 'white';
+    document.getElementById('tbz1desripiador').style.backgroundColor = 'white';
+    document.getElementById('tbHndesripiador').style.backgroundColor = 'white';
+    document.getElementById('tbp2desripiador').style.backgroundColor = 'white';
+    document.getElementById('tbP3desripiador').style.backgroundColor = 'white';
+    document.getElementById('Tbz2desripiador').style.backgroundColor = 'white';
+
+    // Hide result fields
+    document.getElementById('tbhvrnvert').style.display = 'none';
+    document.getElementById('tbcoefbazdesr').style.display = 'none';
+    document.getElementById('tbkonovdesr').style.display = 'none';
+    document.getElementById('tbcoefpromdesr').style.display = 'none';
+    document.getElementById('tbcorrecbazdesr').style.display = 'none';
+    document.getElementById('tbcorrecvilledesr').style.display = 'none';
+    document.getElementById('tbcorrecpromdesr').style.display = 'none';
+    document.getElementById('tbhvrndesr').style.display = 'none';
+    document.getElementById('tblongdesripiador').style.display = 'none';
+    document.getElementById('tbY1desr').style.display = 'none';
+    document.getElementById('tbY1desripiador').style.display = 'none';
+    document.getElementById('tbY2desr').style.display = 'none';
+    document.getElementById('tbY2desripiador').style.display = 'none';
+    document.getElementById('tblongrespavldesr').style.display = 'none';
+    document.getElementById('tblongressafdesr').style.display = 'none';
+    document.getElementById('tblongresbkhdesr').style.display = 'none';
+
+    // Reset select values
+    document.getElementById('sumersiondesr').value = 0;
+    document.getElementById('correcsumerdesr').value = 0;
+}
+
+
+// Mostrar resultados en el HTML
+}
+        function establecerValores() {
+    document.getElementById('tbcaudaldesripiador').value = 3.8;
+    document.getElementById('tbldrdesripiador').value = 9;
+    document.getElementById('tbkdesripiador').value = 0.95;
+    document.getElementById('tbz1desripiador').value = 0.1;
+    document.getElementById('tbHndesripiador').value = 0.65;
+    document.getElementById('tbp2desripiador').value = 1.5;
+    document.getElementById('tbP3desripiador').value = 1.1;
+    document.getElementById('Tbz2desripiador').value = 0.1;
+
+    document.getElementById('sumersiondesr').value = 1;
+    document.getElementById('correcsumerdesr').value = 1;
+}
+    </script>
+</body>
+</html>

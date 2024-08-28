@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal Calculation</title>
+    
+    <script>
+        function calculate() {
+            let longalcant = parseFloat(document.getElementById('Tblongalcant').value);
+            let basealcant = parseFloat(document.getElementById('Tbbasealcant').value);
+            let areadrenalcant = parseFloat(document.getElementById('Tbareadrenalcant').value);
+            let intensidalcant = parseFloat(document.getElementById('Tbintensalcant').value);
+            let rugosidalcant = parseFloat(document.getElementById('Tbrugosidalcant').value);
+            let Calcant = parseFloat(document.getElementById('DdCalcant').value);
+
+            if (!isNaN(longalcant) && !isNaN(basealcant) && !isNaN(areadrenalcant) && !isNaN(intensidalcant) && !isNaN(rugosidalcant) && Calcant !== 0) {
+                document.getElementById('Tblongalcant').style.backgroundColor = 'white';
+                document.getElementById('Tbbasealcant').style.backgroundColor = 'white';
+                document.getElementById('Tbareadrenalcant').style.backgroundColor = 'white';
+                document.getElementById('Tbintensalcant').style.backgroundColor = 'white';
+                document.getElementById('Tbrugosidalcant').style.backgroundColor = 'white';
+                // Perform calculations
+                let Qalcant = (Calcant * intensidalcant * areadrenalcant) / 360;
+                let areaalcant = ((0.183 * Calcant * Math.pow(areadrenalcant, 3 / 4)) / 100) * intensidalcant;
+                let ynormalalcant = areaalcant / basealcant;
+                document.getElementById('tbt').style.display = 'block';
+                document.getElementById('tbt').innerText = 'RESULTADOS:';
+                document.getElementById('tbt').style.color = 'black';
+                document.getElementById('tbt_1').style.display = 'block';
+                document.getElementById('tbt_1').innerText = 'CÁLCULOS DE LOS PARÁMETROS CRÍTICOS:';
+                document.getElementById('tbt_1').style.color = 'black';
+                document.getElementById('tbt_2').style.display = 'block';
+                document.getElementById('tbt_2').innerText = 'CÁLCULO DE LA ALTURA A LA ENTRADA';
+                document.getElementById('tbt_2').style.color = 'black';
+
+                document.getElementById('tbynalcant').style.display = 'block';
+                document.getElementById('tbynalcant').innerText = 'Tirante normal (m) = ' + ynormalalcant.toFixed(4);
+                document.getElementById('tbynalcant').style.color = 'red';
+
+                let permimetalcant = basealcant + (2 * ynormalalcant);
+
+                document.getElementById('tbpmalcant').style.display = 'block';
+                document.getElementById('tbpmalcant').innerText = 'Perímetro mojado (m) = ' +permimetalcant.toFixed(4);
+                document.getElementById('tbpmalcant').style.color = 'red';
+
+                let rhalcant = areaalcant / permimetalcant;
+
+                document.getElementById('tbrhalcant').style.display = 'block';
+                document.getElementById('tbrhalcant').innerText = 'Radio hidráulico = ' +rhalcant.toFixed(4);
+                document.getElementById('tbrhalcant').style.color = 'red';
+
+                let velocalcant = Qalcant / areaalcant;
+
+                document.getElementById('tbvnalcant').style.display = 'block';
+                document.getElementById('tbvnalcant').innerText = ' Velocidad normal (m/s) = ' +velocalcant.toFixed(4);
+                document.getElementById('tbvnalcant').style.color = 'red';
+
+                let snalcant = Math.pow((Qalcant * rugosidalcant) / (areaalcant * Math.pow(rhalcant, 2 / 3)), 2);
+
+                document.getElementById('tbSaalcant').style.display = 'block';
+                document.getElementById('tbSaalcant').innerText = 'Pendiente normal de la alcantarilla (m/m) = ' +snalcant.toFixed(4);
+                document.getElementById('tbSaalcant').style.color = 'red';
+
+                let qualcant = Qalcant / basealcant;
+
+                document.getElementById('tbqualcant').style.display = 'block';
+                document.getElementById('tbqualcant').innerText = 'Caudal unitario (m³/s/m) = ' +qualcant.toFixed(4);
+                document.getElementById('tbqualcant').style.color = 'red';
+
+                let ycalcant = Math.pow(qualcant ** 2 / 9.81, 1 / 3);
+
+                document.getElementById('tbycalcant').style.display = 'block';
+                document.getElementById('tbycalcant').innerText = 'Tirante crítico (m) = ' +ycalcant.toFixed(4);
+                document.getElementById('tbycalcant').style.color = 'red';
+
+                let vcalcant = Math.sqrt(ycalcant * 9.81);
+
+                document.getElementById('tbvcalcant').style.display = 'block';
+                document.getElementById('tbvcalcant').innerText = 'Velocidad crítica (m/s) = ' +vcalcant.toFixed(4);
+                document.getElementById('tbvcalcant').style.color = 'red';
+
+                let acalcant = ycalcant * basealcant;
+
+                document.getElementById('tbacalcant').style.display = 'block';
+                document.getElementById('tbacalcant').innerText = 'Área crítica (m²) = ' +acalcant.toFixed(4);
+                document.getElementById('tbacalcant').style.color = 'red';
+
+                let pcalcant = basealcant + (2 * ycalcant);
+
+                document.getElementById('tbpcalcant').style.display = 'block';
+                document.getElementById('tbpcalcant').innerText = 'Perímetro crítico (m) = ' +pcalcant.toFixed(4);
+                document.getElementById('tbpcalcant').style.color = 'red';
+
+                let rcalcant = acalcant / pcalcant;
+
+                document.getElementById('tbrcalcant').style.display = 'block';
+                document.getElementById('tbrcalcant').innerText = 'Radio crítico = ' +rcalcant.toFixed(4);
+                document.getElementById('tbrcalcant').style.color = 'red';
+
+                let scalcant = Math.pow((Qalcant * rugosidalcant) / (acalcant * Math.pow(rcalcant, 2 / 3)), 2);
+
+                document.getElementById('tbscalcant').style.display = 'block';
+                document.getElementById('tbscalcant').innerText = 'Pendiente crítica (m/m) = ' +scalcant.toFixed(4);
+                document.getElementById('tbscalcant').style.color = 'red';
+
+                let Htalcant = ycalcant / 0.8;
+
+                document.getElementById('tbalteficientealcant').style.display = 'block';
+                document.getElementById('tbalteficientealcant').innerText = 'Altura eficiente (m) ='+Htalcant.toFixed(4);
+                document.getElementById('tbalteficientealcant').style.color = 'red';
+
+                let hvcalcant = Math.pow(vcalcant, 2) / (2 * 9.81);
+
+                document.getElementById('tbhvcalcant').style.display = 'block';
+                document.getElementById('tbhvcalcant').innerText = 'Altura de velocidad crítica (m) = ' +hvcalcant.toFixed(4);
+                document.getElementById('tbhvcalcant').style.color = 'red';
+
+                let h12alcant = snalcant * ((1.4 * ycalcant) + 2);
+                let hvnalcant = Math.pow(velocalcant, 2) / (2 * 9.81);
+
+                document.getElementById('tbhvnalcant').style.display = 'block';
+                document.getElementById('tbhvnalcant').innerText = 'Altura de velocidad normal (m) = ' +hvnalcant.toFixed(4);
+                document.getElementById('tbhvnalcant').style.color = 'red';
+
+                let Healcant = ycalcant + hvcalcant + h12alcant - hvnalcant;
+
+                if (Healcant >= Htalcant) {
+                    Htalcant = 1.2 * Healcant;
+                }
+
+                if (ynormalalcant >= Htalcant) {
+                    Htalcant = 1.2 * ynormalalcant;
+                }
+
+                document.getElementById('TbQalcant').style.display = 'block';
+                document.getElementById('TbQalcant').innerText = 'Caudal en (m³/s) = ' +Qalcant.toFixed(4);
+                document.getElementById('TbQalcant').style.color = 'red';
+
+                document.getElementById('Tbareaalcant').style.display = 'block';
+                document.getElementById('Tbareaalcant').innerText = 'Ancho de la alcantarilla en (m) = ' +areaalcant.toFixed(4);
+                document.getElementById('Tbareaalcant').style.color = 'red';
+
+                document.getElementById('Tbanchalcant').style.display = 'block';
+                document.getElementById('Tbanchalcant').innerText = 'Área de la alcantarilla (m²) = ' +basealcant.toFixed(4);
+                document.getElementById('Tbanchalcant').style.color = 'red';
+
+                document.getElementById('Tbhalcant').style.display = 'block';
+                document.getElementById('Tbhalcant').innerText = 'Altura de entrada a la alcantarilla (m) = ' +Htalcant.toFixed(4);
+                document.getElementById('Tbhalcant').style.color = 'red';
+
+                document.getElementById('Tbhealcant').style.display = 'block';
+                document.getElementById('Tbhealcant').innerText = 'Altura de la alcantarilla en (m) = ' +Healcant.toFixed(4);
+                document.getElementById('Tbhealcant').style.color = 'red';
+
+                if (snalcant < scalcant) {
+                    document.getElementById('Label108').innerText = "Flujo subcrítico";
+                } else if (snalcant === scalcant) {
+                    document.getElementById('Label108').innerText = "Flujo crítico";
+                } else {
+                    document.getElementById('Label108').innerText = "Flujo supercrítico";
+                }
+                document.getElementById('Label108').style.color = 'red';
+
+                let h13alcant = longalcant * snalcant;
+                let hsalidalcant = Healcant + hvnalcant - hvcalcant - h13alcant;
+
+                document.getElementById('tbhsalcant').style.display = 'block';
+                document.getElementById('tbhsalcant').innerText = 'Altura a la salida de la alcantarilla (m) = ' +hsalidalcant.toFixed(4);
+                document.getElementById('tbhsalcant').style.color = 'red';
+
+                if (ycalcant > hsalidalcant) {
+                    document.getElementById('Label110').innerText = "la salida es libre";
+                } else {
+                    document.getElementById('Label110').innerText = "la salida no es libre";
+                }
+                document.getElementById('Label110').style.color = 'red';
+
+                // Show all labels
+                ['Label108', 'Label110'].forEach(id => {
+                    document.getElementById(id).style.display = 'block';
+                });
+            } else {
+                if (isNaN(longalcant)) document.getElementById('Tblongalcant').style.backgroundColor = 'red';
+                if (isNaN(basealcant)) document.getElementById('Tbbasealcant').style.backgroundColor = 'red';
+                if (isNaN(areadrenalcant)) document.getElementById('Tbareadrenalcant').style.backgroundColor = 'red';
+                if (isNaN(intensidalcant)) document.getElementById('Tbintensalcant').style.backgroundColor = 'red';
+                if (isNaN(rugosidalcant)) document.getElementById('Tbrugosidalcant').style.backgroundColor = 'red';
+            }
+        }
+        function setValues() {
+    document.getElementById('Tblongalcant').value = 4.5;
+    document.getElementById('Tbbasealcant').value = 1.2;
+    document.getElementById('Tbareadrenalcant').value = 83.22;
+    document.getElementById('Tbintensalcant').value = 68.33;
+    document.getElementById('Tbrugosidalcant').value = 0.014;
+    document.getElementById('DdCalcant').value = 3;
+    document.getElementById('DdCalcant').value = 0.2;
+}
+function resetForm() {
+    // Reset background color of text fields
+    document.getElementById('Tblongalcant').style.backgroundColor = 'white';
+    document.getElementById('Tbbasealcant').style.backgroundColor = 'white';
+    document.getElementById('Tbareadrenalcant').style.backgroundColor = 'white';
+    document.getElementById('Tbintensalcant').style.backgroundColor = 'white';
+    document.getElementById('Tbrugosidalcant').style.backgroundColor = 'white';
+
+    // Clear text fields
+    document.getElementById('Tblongalcant').value = '';
+    document.getElementById('Tbbasealcant').value = '';
+    document.getElementById('Tbareadrenalcant').value = '';
+    document.getElementById('Tbintensalcant').value = '';
+    document.getElementById('Tbrugosidalcant').value = '';
+
+    // Reset dropdown list
+    document.getElementById('DdCalcant').value = '0';
+
+    // Hide result elements
+    document.getElementById('tbt').style.display = 'none';
+    document.getElementById('tbt_1').style.display = 'none';
+    document.getElementById('tbt_2').style.display = 'none';
+    document.getElementById('tbynalcant').style.display = 'none';
+    document.getElementById('tbpmalcant').style.display = 'none';
+    document.getElementById('tbrhalcant').style.display = 'none';
+    document.getElementById('tbvnalcant').style.display = 'none';
+    document.getElementById('tbSaalcant').style.display = 'none';
+    document.getElementById('tbqualcant').style.display = 'none';
+    document.getElementById('tbycalcant').style.display = 'none';
+    document.getElementById('tbvcalcant').style.display = 'none';
+    document.getElementById('tbacalcant').style.display = 'none';
+    document.getElementById('tbpcalcant').style.display = 'none';
+    document.getElementById('tbrcalcant').style.display = 'none';
+    document.getElementById('tbscalcant').style.display = 'none';
+    document.getElementById('tbalteficientealcant').style.display = 'none';
+    document.getElementById('tbhvcalcant').style.display = 'none';
+    document.getElementById('tbhvnalcant').style.display = 'none';
+    document.getElementById('TbQalcant').style.display = 'none';
+    document.getElementById('Tbareaalcant').style.display = 'none';
+    document.getElementById('Tbanchalcant').style.display = 'none';
+    document.getElementById('Tbhalcant').style.display = 'none';
+    document.getElementById('Tbhealcant').style.display = 'none';
+    document.getElementById('tbhsalcant').style.display = 'none';
+
+    // Hide labels
+    var labels = ['Label108','Label110'
+    ];
+
+    for (var i = 0; i < labels.length; i++) {
+        document.getElementById(labels[i]).style.display = 'none';
+    }
+}
+
+
+document.getElementById('Button6').addEventListener('click', setValues);
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <label for="Tblongalcant">Longitud:</label>
+        <input type="text" id="Tblongalcant">
+        <br>
+        <label for="Tbbasealcant">Base:</label>
+        <input type="text" id="Tbbasealcant">
+        <br>
+        <label for="Tbareadrenalcant">Área de drenaje:</label>
+        <input type="text" id="Tbareadrenalcant">
+        <br>
+        <label for="Tbintensalcant">Intensidad:</label>
+        <input type="text" id="Tbintensalcant">
+        <br>
+        <label for="Tbrugosidalcant">Rugosidad:</label>
+        <input type="text" id="Tbrugosidalcant">
+        <br>
+        <label for="DdCalcant">Coeficiente:</label>
+        <select id="DdCalcant">
+            <option value="0">Seleccione</option>
+            <option value="1">1</option>
+            <option value="0.8">0.8</option>
+            <option value="0.6">0.6</option>
+            <option value="0.5">0.5</option>
+            <option value="0.4">0.4</option>
+            <option value="0.3">0.3</option>
+            <option value="0.2">0.2</option>
+        </select>
+
+        <button onclick="calculate()">Calcular</button>
+        <button onclick="setValues()">Ejemplo</button>
+        <button onclick="resetForm()">Reseteo Formulario</button>
+ 
+    </div>
+    <div>
+        <h1>RESULTADOS:</h1>
+        <label id="tbt" style="display: none;"></label>
+        <label id="TbQalcant" style="display: none;"></label>
+        <br>
+        <label id="Tbanchalcant" style="display: none;"></label>
+        <br>
+        <label id="Tbareaalcant" style="display: none;"></label>
+        <br>
+        <label id="tbynalcant" style="display: none;"></label>
+        <br>
+        <label id="tbpmalcant" style="display: none;"></label>
+        <br>
+        <label id="tbrhalcant" style="display: none;"></label>
+        <br>
+        <label id="tbvnalcant" style="display: none;"></label>
+        <br>
+        <label id="tbSaalcant" style="display: none;"></label>
+        <br>
+        <label id="tbt_1" style="display: none;"></label>
+        <label id="tbqualcant" style="display: none;"></label>
+        <br>
+        <label id="tbycalcant" style="display: none;"></label>
+        <br>
+        <label id="tbvcalcant" style="display: none;"></label>
+        <br>
+        <label id="tbacalcant" style="display: none;"></label>
+        <br>
+        <label id="tbpcalcant" style="display: none;"></label>
+        <br>
+        <label id="tbrcalcant" style="display: none;"></label>
+        <br>
+        <label id="tbscalcant" style="display: none;"></label>
+        <br>
+        <label id="tbalteficientealcant" style="display: none;"></label>
+        <br>
+        <label id="tbt_2" style="display: none;"></label>
+        <label id="tbhvcalcant" style="display: none;"></label>
+        <br>
+        <label id="tbhvnalcant" style="display: none;"></label>
+        <br>
+        <label id="Tbhalcant" style="display: none;"></label>
+        <br>
+        <label id="Tbhealcant" style="display: none;"></label>
+        <br>
+        <label id="Label108" style="display: none;"></label>
+        <br>
+        <label id="tbhsalcant" style="display: none;"></label>
+        <br>
+        <label id="Label110" style="display: none;"></label>
+        <br>
+    
+    </div>
+</body>
+</html>

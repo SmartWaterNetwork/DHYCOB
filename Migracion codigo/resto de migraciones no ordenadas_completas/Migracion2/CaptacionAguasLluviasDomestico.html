@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        .input-error {
+            background-color: #ffdddd;
+        }
+        .input-valid {
+            background-color: #ffffff;
+        }
+        .result {
+            color: red;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <form id="formulario">
+        <select id="Ddformamet1">
+            <option value="0">Seleccionar</option>
+            <option value="1">Método 1</option>
+            <option value="2">Método 2</option>
+        </select><br>
+
+        <input type="text" id="Tbhab" placeholder="Hábito"><br>
+        <input type="text" id="Tbdot" placeholder="Dotación"><br>
+        <input type="text" id="Tbniu" placeholder="Niu"><br>
+        <input type="text" id="Tblong" placeholder="Longitud"><br>
+        <input type="text" id="Tblluvia" placeholder="Lluvia"><br>
+        <input type="text" id="Tbhl" placeholder="Hl"><br>
+        <input type="text" id="Tbprecmax" placeholder="Prec Max"><br>
+        <input type="text" id="TbDprec" placeholder="Dprec"><br>
+        <input type="text" id="Tbsupcap" placeholder="Supcap"><br>
+        <input type="text" id="Tbbcondrec" placeholder="Bcondrec"><br>
+
+        <input type="text" id="tbconshor1" placeholder="Prec 1"><br>
+        <input type="text" id="tbconshor2" placeholder="Prec 2"><br>
+        <input type="text" id="tbconshor3" placeholder="Prec 3"><br>
+        <input type="text" id="tbconshor4" placeholder="Prec 4"><br>
+        <input type="text" id="tbconshor5" placeholder="Prec 5"><br>
+        <input type="text" id="tbconshor6" placeholder="Prec 6"><br>
+        <input type="text" id="tbconshor7" placeholder="Prec 7"><br>
+        <input type="text" id="tbconshor8" placeholder="Prec 8"><br>
+        <input type="text" id="tbconshor9" placeholder="Prec 9"><br>
+        <input type="text" id="tbconshor10" placeholder="Prec 10"><br>
+        <input type="text" id="tbconshor11" placeholder="Prec 11"><br>
+        <input type="text" id="tbconshor12" placeholder="Prec 12"><br>
+
+        <button type="button" onclick="calculate()">Calcular</button>
+        <button type="button" onclick="setDefaultValues()">Configurar Valores Predeterminados</button>
+    </form>
+
+    <div id="resultados">
+        <div id="tbdemanmens" class="result"></div>
+        <div id="tbdemananual" class="result"></div>
+    </div>
+
+    <table id="tablaResultados">
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Precipitación (j) (mm)</th>
+                <th>Precipitación Neta (j) (mm)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las filas se llenarán dinámicamente con JavaScript -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><strong>Total Anual</strong></td>
+                <td id="totalPrecip" class="result"></td>
+                <td id="totalPrecipNeta" class="result"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div>
+        <div id="tbareacap" class="result"></div>
+        <div id="tbtcon" class="result"></div>
+        <div id="tbtb" class="result"></div>
+        <div id="tbtp" class="result"></div>
+        <div id="tbQpmax" class="result"></div>
+        <div id="tbareahid" class="result"></div>
+        <div id="tbdiamcap" class="result"></div>
+        <div id="tbvolcap" class="result"></div>
+        <div id="tbvolcap0" class="result"></div>
+        <div id="tbvolcist" class="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            let hab = parseFloat(document.getElementById("Tbhab").value);
+            let dot = parseFloat(document.getElementById("Tbdot").value);
+            let niu = parseFloat(document.getElementById("Tbniu").value);
+            let longitud = parseFloat(document.getElementById("Tblong").value);
+            let lluvia = parseFloat(document.getElementById("Tblluvia").value);
+            let hl = parseFloat(document.getElementById("Tbhl").value);
+            let prec = [];
+            for (let i = 1; i <= 12; i++) {
+                prec.push(parseFloat(document.getElementById(`tbconshor${i}`).value));
+            }
+            let precmax = parseFloat(document.getElementById("Tbprecmax").value);
+            let supcap = parseFloat(document.getElementById("Tbsupcap").value);
+            let Dprec = parseFloat(document.getElementById("TbDprec").value);
+            let bcondrec = parseFloat(document.getElementById("Tbbcondrec").value);
+
+            if (isNaN(hab) || isNaN(dot) || isNaN(niu) || isNaN(longitud) || isNaN(lluvia) || isNaN(hl) || isNaN(precmax) || isNaN(supcap) || isNaN(Dprec) || isNaN(bcondrec) || prec.some(isNaN)) {
+                alert('Por favor, complete todos los campos correctamente.');
+                return;
+            }
+
+            let Ndec = 4; // Default value
+            switch (parseInt(document.getElementById("Ddformamet1").value)) {
+                case 1:
+                    Ndec = 1;
+                    break;
+                case 2:
+                    Ndec = 2;
+                    break;
+                case 3:
+                    Ndec = 3;
+                    break;
+                case 4:
+                    Ndec = 4;
+                    break;
+            }
+
+            let demandmens = (hab * dot * 30.4) / 1000;
+            document.getElementById("tbdemanmens").textContent = demandmens.toFixed(4);
+
+            let demanual = demandmens * 12;
+            document.getElementById("tbdemananual").textContent = demanual.toFixed(4);
+
+            let tableBody = document.querySelector("#tablaResultados tbody");
+            let tableFootTotalPrecip = document.getElementById("totalPrecip");
+            let tableFootTotalPrecipNeta = document.getElementById("totalPrecipNeta");
+
+            tableBody.innerHTML = ""; // Limpiar la tabla antes de llenarla
+
+            let mes = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            let totalPrecip = 0, totalPrecipNeta = 0;
+            for (let i = 0; i < 12; i++) {
+                let precj = prec[i];
+                let precNeta = precj * niu;
+                totalPrecip += precj;
+                totalPrecipNeta += precNeta;
+
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${mes[i]}</td>
+                    <td>${precj.toFixed(4)}</td>
+                    <td>${precNeta.toFixed(4)}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+
+            // Mostrar los totales
+            tableFootTotalPrecip.textContent = totalPrecip.toFixed(4);
+            tableFootTotalPrecipNeta.textContent = totalPrecipNeta.toFixed(4);
+
+            // Calculando areacap
+            let areacap = demanual / (totalPrecipNeta / 1000);
+            document.getElementById("tbareacap").textContent = areacap.toFixed(4);
+
+            // Calculando Spend, tconc, tp, tp2
+            let Spend = Math.abs(hl - lluvia) / longitud;
+            let tconc = 0.000325 * Math.pow(longitud, 0.77) / Math.pow(Spend, 0.385);
+            let tp = 2 * Math.sqrt(tconc) + 0.6 * tconc;
+            let tp2 = (0.5 * Dprec) + (0.5 * tconc);
+
+            document.getElementById("tbtcon").textContent = tconc.toFixed(4);
+
+            let tb = 2.67 * tp;
+            let tb2 = 2.67 * tp2;
+            let Qp = (0.278 * precmax * (supcap / 1000000)) / tp;
+            let Qp2 = (0.278 * precmax * (supcap / 1000000)) / tp2;
+
+            if (Qp2 > Qp) {
+                document.getElementById("tbtb").textContent = tb2.toFixed(4);
+                document.getElementById("tbtp").textContent = tp2.toFixed(4);
+                document.getElementById("tbQpmax").textContent = (Qp2 * 1000).toFixed(4);
+
+                let areahid = Qp2 / 1.2;
+                document.getElementById("tbareahid").textContent = areahid.toFixed(4);
+
+                let tbdiamcap = (areahid / bcondrec).toFixed(2);
+                document.getElementById("tbdiamcap").textContent = tbdiamcap;
+
+                let permoj = bcondrec + (2 * (areahid / bcondrec));
+                document.getElementById("tbvolcap").textContent = permoj.toFixed(4);
+
+                let radhid = areahid / permoj;
+                document.getElementById("tbvolcap0").textContent = radhid.toFixed(4);
+            } else {
+                document.getElementById("tbtb").textContent = tb.toFixed(4);
+                document.getElementById("tbtp").textContent = tp.toFixed(4);
+                document.getElementById("tbQpmax").textContent = (Qp * 1000).toFixed(4);
+
+                let areahid = Qp / 1.2;
+                document.getElementById("tbareahid").textContent = areahid.toFixed(4);
+
+                let tbdiamcap = (areahid / bcondrec).toFixed(2);
+                document.getElementById("tbdiamcap").textContent = tbdiamcap;
+
+                let permoj = bcondrec + (2 * (areahid / bcondrec));
+                document.getElementById("tbvolcap").textContent = permoj.toFixed(4);
+
+                let radhid = areahid / permoj;
+                document.getElementById("tbvolcap0").textContent = radhid.toFixed(4);
+                
+            }
+            let Vcist = demandmens * 8;
+
+// Mostrar Vcist
+let tbvolcist = document.getElementById("tbvolcist");
+tbvolcist.style.display = 'block'; // Hacer visible el elemento
+tbvolcist.textContent = Vcist.toFixed(Ndec); 
+        }
+        function setDefaultValues() {
+            document.getElementById("Tbhab").value = 4;
+            document.getElementById("Tbdot").value = 40;
+            document.getElementById("Tbniu").value = 0.765;
+            document.getElementById("Tblong").value = 7.5;
+            document.getElementById("Tblluvia").value = 3.5;
+            document.getElementById("Tbhl").value = 3;
+            document.getElementById("Tbsupcap").value = 60;
+            document.getElementById("Tbprecmax").value = 40;
+            document.getElementById("TbDprec").value = 0.167;
+            document.getElementById("Tbbcondrec").value = 0.08;
+            document.getElementById("Ddformamet1").value = 1;
+            document.getElementById("tbconshor1").value = 10;
+            document.getElementById("tbconshor2").value = 5;
+            document.getElementById("tbconshor3").value = 10;
+            document.getElementById("tbconshor4").value = 28;
+            document.getElementById("tbconshor5").value = 48;
+            document.getElementById("tbconshor6").value = 98;
+            document.getElementById("tbconshor7").value = 112;
+            document.getElementById("tbconshor8").value = 105;
+            document.getElementById("tbconshor9").value = 85;
+            document.getElementById("tbconshor10").value = 42;
+            document.getElementById("tbconshor11").value = 11;
+            document.getElementById("tbconshor12").value = 7;
+        }
+    </script>
+</body>
+</html>

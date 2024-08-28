@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Canal</title>
+    <style>
+        /* Puedes agregar estilos aquí */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Canal</h1>
+    <!-- Formularios de entrada -->
+    <div>
+        <label for="tbqdlech">Qdlech (m³/s):</label>
+        <input type="number" id="tbqdlech" step="any"><br>
+
+        <label for="tbqmxlech">Qmxlech:</label>
+        <input type="number" id="tbqmxlech" step="any"><br>
+
+        <label for="tbdiamcondlateral">Diámetro Cond. Lateral (m):</label>
+        <input type="number" id="tbdiamcondlateral" step="any"><br>
+
+        <label for="tbdiamcondprinc">Diámetro Cond. Principal (m):</label>
+        <input type="number" id="tbdiamcondprinc" step="any"><br>
+
+        <label for="tbinflech">Influencia (m):</label>
+        <input type="number" id="tbinflech" step="any"><br>
+
+        <label for="tbazudlech">Azudlech (m):</label>
+        <input type="number" id="tbazudlech" step="any"><br>
+
+        <label for="tbaltvertazud">Altura Vertical Azud (m):</label>
+        <input type="number" id="tbaltvertazud" step="any"><br>
+
+        <label for="tbgrava">Grava (m):</label>
+        <input type="number" id="tbgrava" step="any"><br>
+
+        <label for="tbnumcond">Número de Condiciones:</label>
+        <input type="number" id="tbnumcond" step="any"><br>
+
+        <label for="tblongcondlat">Longitud Cond. Lateral (m):</label>
+        <input type="number" id="tblongcondlat" step="any"><br>
+
+        <label for="tbsepcondlat">Separación Cond. Lateral (m):</label>
+        <input type="number" id="tbsepcondlat" step="any"><br>
+
+        <label for="tbnumorifilat">Número de Orificios Lateral:</label>
+        <input type="number" id="tbnumorifilat" step="any"><br>
+
+        <label for="tblongcondprinc">Longitud Cond. Principal (m):</label>
+        <input type="number" id="tblongcondprinc" step="any"><br>
+     <!-- Configuración de accesorios -->
+        <div>
+            <label for="DropDownList1">Accesorio 1:</label>
+            <select id="DropDownList1">
+                <option value="0">Aplicación gradual</option>
+                <option value="1">Codo de 90 grados</option>
+                <option value="2">Curva de 90 grados</option>
+                <option value="3">Codo de 45 grados</option>
+                <option value="4">Curva de 45 grados</option>
+                <option value="5">Entrada normal</option>
+                <option value="6">Entrada de borda</option>
+                <option value="7">Unión</option>
+                <option value="8">Reduccion gradual</option>
+                <option value="9">Válvula de compuerta abierta</option>
+                <option value="10">Válvula de globo abierta</option>
+                <option value="11">Saluda de tubería</option>
+                <option value="12">Te, paso directo</option>
+                <option value="13">Te, salida bilateral</option>
+                <option value="14">Válvula de pie con colador</option>
+                <option value="15">Válvula de retención</option>
+            </select>
+        </div>
+    
+        <div>
+            <label for="DropDownList3">Accesorio 2:</label>
+            <select id="DropDownList3">
+                <option value="0">Aplicación gradual</option>
+                <option value="1">Codo de 90 grados</option>
+                <option value="2">Curva de 90 grados</option>
+                <option value="3">Codo de 45 grados</option>
+                <option value="4">Curva de 45 grados</option>
+                <option value="5">Entrada normal</option>
+                <option value="6">Entrada de borda</option>
+                <option value="7">Unión</option>
+                <option value="8">Reduccion gradual</option>
+                <option value="9">Válvula de compuerta abierta</option>
+                <option value="10">Válvula de globo abierta</option>
+                <option value="11">Saluda de tubería</option>
+                <option value="12">Te, paso directo</option>
+                <option value="13">Te, salida bilateral</option>
+                <option value="14">Válvula de pie con colador</option>
+                <option value="15">Válvula de retención</option>
+            </select>
+        </div>
+    
+        <!-- Botón para calcular -->
+        <button id="btnCalculate" onclick="calculate()">Calcular</button>
+        <button id="btnSetValues">Establecer Valores</button>
+    </div>
+
+    <!-- Resultados -->
+    <div id="results">
+        <p>Área del Sistema de Filtración: <span id="tbareasistfilt"></span></p>
+        <p>Base del Sistema de Filtración: <span id="tbbsistfilt"></span></p>
+        <p>Lámina de Agua: <span id="tblamagua"></span></p>
+        <p>Área del Recipiente: <span id="tbarearec"></span></p>
+        <p>Velocidad del Recipiente: <span id="tbvelreco"></span></p>
+        <p>Área del Condensador: <span id="tbareacond"></span></p>
+        <p>Caudal del Condensador: <span id="tbcaudalcond"></span></p>
+        <p>Velocidad del Condensador: <span id="tbvelcond"></span></p>
+        <p>Número de Anillos: <span id="tbanillos"></span></p>
+        <p>Número de Orificios: <span id="tborificios"></span></p>
+        <p>Área por Orificio: <span id="tbareaorif"></span></p>
+        <p>Suma de Áreas por Orificio: <span id="tbsumareaorif"></span></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Diám. material (pulg)</th>
+                    <th>Diám. del material (cm)</th>
+                    <th>Espesor de la capa (cm)</th>
+                    <th>Pérdidas hf (cm)</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+            </tbody>
+        </table>
+        <p>Pérdida en cond. principal: <span id="tbhfcondprinc"></span></p>
+    <p>Pérdida en cond. lateral: <span id="tbhfcondlat"></span></p>
+    <p>Pérdida en múltiples: <span id="tbhfmultrec"></span></p>
+    <p>Pérdida en accesorios: <span id="tbhaacces"></span></p>
+    <p>Pérdida por velocidad: <span id="tbhs"></span></p>
+    <p>Pérdida por entrada: <span id="tbheentrada"></span></p>
+    <p>Pérdida total: <span id="tbhflechfilt"></span></p>
+    </div>
+
+    
+
+    <!-- Incluye tu script JavaScript -->
+    <script src="Lecho.js"></script>
+    
+</body>
+</html>

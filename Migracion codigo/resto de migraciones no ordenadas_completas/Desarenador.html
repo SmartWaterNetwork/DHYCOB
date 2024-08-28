@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Desarenador Convencional</title>
+    <style>
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+
+<body>
+    <h1>Calculadora Desarenador Convencional</h1>
+    
+    <label for="tbcaudaldesarenador">Caudal (m³/s) = </label>
+    <input type="text" id="tbcaudaldesarenador"><br>
+    <label for="ConDesCombo">Diámetro de partículas (mm) = </label>
+    <select id="ConDesCombo">
+        <option value="0">0.05</option>
+        <option value="1">0.1</option>
+        <option value="2">0.15</option>
+        <option value="3">0.2</option>
+        <option value="4">0.25</option>
+        <option value="5">0.3</option>
+        <option value="6">0.35</option>
+        <option value="7">0.4</option>
+        <option value="8">0.45</option>
+        <option value="9">0.5</option>
+        <option value="10">0.55</option>
+        <option value="11">0.6</option>
+        <option value="12">0.7</option>
+        <option value="13">0.8</option>
+        <option value="14">1</option>
+        <option value="15">2</option>
+        <option value="16">3</option>
+        <option value="17">5</option>
+    </select><br>
+    <label for="Tbxc1">Base del canal de llegada al des. (m) = </label>
+    <input type="text" id="Tbxc1"><br>
+    <label for="tbdc">Altura del agua sobre vertedero (m) = </label>
+    <input type="text" id="tbdc"><br>
+    <label for="Tbvd">Velocidad desarenador (m/s) = </label>
+    <input type="text" id="Tbvd"><br>
+    <label for="ConDesPendiente">Relación b/d (adoptado) =</label>
+    <select id="ConDesPendiente">
+        <option value="0">1</option>
+        <option value="1">2</option>
+        <option value="2">3</option>
+        <option value="3">4</option>
+        <option value="4">5</option>
+    </select><br>
+    <label for="tbm">Talud de las paredes (z) = </label>
+    <input type="text" id="tbm"><br>
+    <label for="Tbjc">Pendiente de cámara (Jc) % = </label>
+    <input type="text" id="Tbjc"><br>
+    <label for="tbadesarenador">Abertura en la compuerta de lavado (m) = </label>
+    <input type="text" id="tbadesarenador"><br>
+    <label for="tbbc">X (m) = </label>
+    <input type="text" id="tbbc"><br>
+    <label for="Tbyc1">Y (m) = </label>
+    <input type="text" id="Tbyc1"><br>
+    <label for="Tbxc2">X (m) = </label>
+    <input type="text" id="Tbxc2"><br>
+    <label for="Tbyc2">Y (m) = yc2:</label>
+    <input type="text" id="Tbyc2"><br>
+
+    <button id="BtnCaptacionConvencionalDesarenador">Calcular</button>
+    <button id="Button7">Preset Values</button>
+    <button onclick="clearFields()">Limpiar</button><br><br>
+
+    <label for="Tbw">w (m/s) = </label>
+    <input type="text" id="Tbw" class="red-text"><br>
+    <label for="Tbbvr">Vertedero de paso (m) = </label>
+    <input type="text" id="Tbbvr" class="red-text"><br>
+    <label for="TbLtr">Longitud de la transición (m) = </label>
+    <input type="text" id="TbLtr" class="red-text"><br>
+    <label for="TbLactiv">Longitud activa cámara (m) = </label>
+    <input type="text" id="TbLactiv" class="red-text"><br>
+    <label for="TbLpr">Longitud proyección del vertedero circular (m) = </label>
+    <input type="text" id="TbLpr" class="red-text"><br>
+    <label for="TbLtc">Longitud total del desripiador (m) = </label>
+    <input type="text" id="TbLtc" class="red-text"><br><br>
+
+    <label for="tbvelsedim">Velocidad sedimentación (m/s) = </label>
+    <input type="text" id="tbvelsedim" class="red-text">
+    <label for="tbvelpasovert">Velocidad paso vertedero (m/s) = </label>
+    <input type="text" id="tbvelpasovert" class="red-text">
+    <label for="tbradiocurv">Radio de la curva (m) = </label>
+    <input type="text" id="tbradiocurv" class="red-text">
+    <label for="tbangcurva">Ángulo central de la curva = </label>
+    <input type="text" id="tbangcurva" class="red-text">
+    <label for="tbsecccamar">Sección cámara (m²) = </label>
+    <input type="text" id="tbsecccamar" class="red-text">
+    <label for="tbcaladcamara">Calado en la cámara (m) = </label>
+    <input type="text" id="tbcaladcamara" class="red-text">
+    <label for="tbanchcamara">Ancho fondo cámara (m) = </label>
+    <input type="text" id="tbanchcamara" class="red-text">
+    <label for="tbanchsupcamar">Ancho superior cámara (m) = </label>
+    <input type="text" id="tbanchsupcamar" class="red-text">
+    <label for="tbaltseccion">Altura de la sección (m) = </label>
+    <input type="text" id="tbaltseccion" class="red-text"><br><br>
+
+    <label for="tbdeltaz">Profundidad (m) = </label>
+    <input type="text" id="tbdeltaz" class="red-text">
+    <label for="tblongcaid">Longitud caida (m) = </label>
+    <input type="text" id="tblongcaid" class="red-text">
+    <label for="tbprofdes"> Profundidad del desarenador frente compuerta (m) = </label>
+    <input type="text" id="tbprofdes" class="red-text">
+    <label for="tbaltagua">Altura de agua desde superficie hasta el fondo desarenador (m) = </label>
+    <input type="text" id="tbaltagua" class="red-text"><br><br>
+
+    <label for="tbcargaagua">Carga sobre el orificio (m) = </label>
+    <input type="text" id="tbcargaagua" class="red-text">
+    <label for="tbqcompuerta"> Caudal en compuerta (m³/s) = </label>
+    <input type="text" id="tbqcompuerta" class="red-text">
+    <label id="Label134" class="hidden"></label>
+    <label for="tbvsdesarenador">Velocidad de salida (m/s) = </label>
+    <input type="text" id="tbvsdesarenador" class="red-text"><br><br>
+    <table id="GridView1" style="display: none;">
+        <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <script src="Desarenador.js"></script>
+</body>
+</html>

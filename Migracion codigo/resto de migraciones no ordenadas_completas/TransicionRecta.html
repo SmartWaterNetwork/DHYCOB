@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captación Convencional CP</title>
+    <style>
+        .result {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="captacionForm">
+        <label for="tbrugosidadCP">Rugosidad CP:</label>
+        <input type="text" id="tbrugosidadCP"><br>
+        <label for="Tbbc">Base Canal (m):</label>
+        <input type="text" id="Tbbc"><br>
+        <label for="TbJ">Pendiente Canal (J) (%):</label>
+        <input type="text" id="TbJ"><br>
+        <label for="Tbbv">Base Vaso (m):</label>
+        <input type="text" id="Tbbv"><br>
+        <label for="Tbm">Pendiente (m):</label>
+        <input type="text" id="Tbm"><br>
+        <label for="TbQ">Caudal de Diseño (m³/s):</label>
+        <input type="text" id="TbQ"><br>
+        <label for="DropDownList2">Número de Decimales:</label>
+        <select id="DropDownList2">
+            <option value="0">4</option>
+            <option value="1">0</option>
+            <option value="2">1</option>
+            <option value="3">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+        </select><br>
+        <label for="ConCanPasoN1">Condición Canal:</label>
+        <select id="ConCanPasoN1">
+            <option value="0">0.012</option>
+            <option value="1">0.014</option>
+            <option value="2">0.015</option>
+            <option value="3">0.02</option>
+        </select><br>
+        <button type="button" onclick="calcularCaptacion()">Calcular</button>
+        <button type="button" id="BtnCaptacionConvencionalCP0">Establecer valores</button>
+        <button type="button" id="BtnCaptacionConvencionalCP1">Restablecer valores</button>
+    </form>
+
+    <div>
+        <label for="tbcaudalvertido">Caudal vertido (m³/s) = </label>
+        <span id="tbcaudalvertido" class="result"></span><br>
+        <label for="Tbdc">Calado del canal dc (m) = </label>
+        <span id="Tbdc" class="result"></span><br>
+        <label for="Tbfs">Franco de seguridad fs (m) = </label>
+        <span id="Tbfs" class="result"></span><br>
+        <label for="Tbhc">Altura total del canal hc (m) = </label>
+        <span id="Tbhc" class="result"></span><br>
+        <label for="TbLtrcp">Longitud de la transición Ltr (m) = </label>
+        <span id="TbLtrcp" class="result"></span><br>
+        <label for="TbYc">Tirante crítico Yc (m) = </label>
+        <span id="TbYc" class="result"></span><br>
+        <label for="tbeminpaso">Energía mínima = </label>
+        <span id="tbeminpaso" class="result"></span><br>
+        <label for="TbQm">Caudal máximo Qm (m³/s) = </label>
+        <span id="TbQm" class="result"></span><br>
+        <label for="tbnfroudpaso">Número de Froude = </label>
+        <span id="tbnfroudpaso" class="result"></span><br>
+        <label for="tbvcpaso">Velocidad crítica Vc (m/s) = </label>
+        <span id="tbvcpaso" class="result"></span><br>
+        <label for="TbAh">Área hIdráulica Ah (m²) = </label>
+        <span id="TbAh" class="result"></span><br>
+        <label for="TbPh">Perímetro hidráulico Ph (m) = </label>
+        <span id="TbPh" class="result"></span><br>
+        <label for="TbRh">Radio hIdráulico Rh (m) = </label>
+        <span id="TbRh" class="result"></span><br>
+        <label for="TbV">Velocidad de paso V (m/s) = </label>
+        <span id="TbV" class="result"></span><br>
+        <label for="tbanchsuperficial">Ancho superficial T (m) = </label>
+        <span id="tbanchsuperficial" class="result"></span><br>
+        <h1>Flujo Supercritico</h1>
+        <label for="tb33">dc= </label>
+        <span id="tb33" class="result"></span><br>
+        <label for="tb34">fs= </label>
+        <span id="tb34" class="result"></span><br>
+        <label for="tb35">hc= </label>
+        <span id="tb35" class="result"></span><br>
+        <label for="tb36">bc= </label>
+        <span id="tb36" class="result"></span><br>
+        <label for="tb37">Pediente= </label>
+        <span id="tb37" class="result"></span><br>
+        <label for="tb38">bc= </label>
+        <span id="tb38" class="result"></span><br>
+        <span id="tb39" class="result"></span><br>
+        <label for="tb40">bv= </label>
+        <span id="tb40" class="result"></span><br>
+        <label for="tb41">Ltrn= </label>
+        <span id="tb41" class="result"></span><br>
+    </div>
+
+    <script src="TransicionRecta.js"></script>
+</body>
+</html>
+

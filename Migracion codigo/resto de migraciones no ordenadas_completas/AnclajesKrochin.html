@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Anclajes</title>
+    <style>
+        .input-field {
+            margin: 5px 0;
+        }
+        .input-field input {
+            width: 100px;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        .white-bg {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Anclajes</h1>
+    <div class="input-field">
+        <label for="tbQanclajesifon">Qanclajesifon:</label>
+        <input type="number" id="tbQanclajesifon" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbdiamanclajesifon">Diámetro Anclajesifon:</label>
+        <input type="number" id="tbdiamanclajesifon" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbesftrabajacero">Esfuerzo Trabajo Cero:</label>
+        <input type="number" id="tbesftrabajacero" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbpresjuntagarrib">Presión Junta Arriba:</label>
+        <input type="number" id="tbpresjuntagarrib" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbPanclaj">P Anclaje:</label>
+        <input type="number" id="tbPanclaj" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbpreshidrostanclaj">Presión Hidrostática Anclaje:</label>
+        <input type="number" id="tbpreshidrostanclaj" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbpresjuntagabajo">Presión Junta Abajo:</label>
+        <input type="number" id="tbpresjuntagabajo" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tblonghorl1">Longitud Horizontal L1:</label>
+        <input type="number" id="tblonghorl1" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tblonghorl2">Longitud Horizontal L2:</label>
+        <input type="number" id="tblonghorl2" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbbeta1">Beta 1:</label>
+        <input type="number" id="tbbeta1" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbbeta2">Beta 2:</label>
+        <input type="number" id="tbbeta2" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbfanclaje">F Anclaje:</label>
+        <input type="number" id="tbfanclaje" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbBanclaj">B Anclaje:</label>
+        <input type="number" id="tbBanclaj" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbHanclaj">H Anclaje:</label>
+        <input type="number" id="tbHanclaj" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbespminanclaj">Espesor Mínimo Anclaje:</label>
+        <input type="number" id="tbespminanclaj" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tblongancl">Longitud Anclaje:</label>
+        <input type="number" id="tblongancl" step="any">
+    </div>
+    <div class="input-field">
+        <label for="tbrecubrimiento">Recubrimiento:</label>
+        <input type="number" id="tbrecubrimiento" step="any">
+    </div>
+    <div class="input-field">
+        <label for="DropDownList2">Número de Decimales:</label>
+        <select id="DropDownList2">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="input-field">
+        <button class="button" onclick="ejemplo()">Ejemplo</button>
+        <button class="button" onclick="anclajes()">Calcular Anclajes</button>
+    </div>
+    <div id="results">
+        <p><span id="tb1">RESULTADOS FUERZAS CALCULADAS </span></p>
+        <p>F1 Anclaje: <span id="tbf1anclaj"></span></p>
+        <p>F2 Anclaje: <span id="tbf2anclaj"></span></p>
+        <p>F3 Anclaje: <span id="tf3anclaj"></span></p>
+        <p>F4 Anclaje: <span id="tf4anclaj"></span></p>
+        <p>F5 Anclaje: <span id="tf5anclaj"></span></p>
+        <p>F6 Anclaje: <span id="tf6anclaj"></span></p>
+        <p>F7 Anclaje: <span id="tf7anclaj"></span></p>
+        <p>F8 Anclaje: <span id="tf8anclaj"></span></p>
+        <p>F9 Anclaje: <span id="tf9anclaj"></span></p>
+        <p>F10 Anclaje: <span id="tf10anclaj"></span></p>
+        <p>F11 Anclaje: <span id="tf11anclaj"></span></p>
+        <p>F12 Anclaje: <span id="tf12anclaj"></span></p>
+        <p>F13 Anclaje: <span id="tf13anclaj"></span></p>
+        <p>F14 Anclaje: <span id="tf14anclaj"></span></p>
+        <p>F15 Anclaje: <span id="tf15anclaj"></span></p>
+        <p>F16 Anclaje: <span id="tf16anclaj"></span></p>
+
+        <p><span id="tb2">RESULTADOS DE LAS COMPONENTES DE LAS FUERZAS FINALES </span></p>
+        <p>Fuerza horizontal, para aumento de temperatura (Tn) = <span id="SFH"></span></p>
+        <p>Fuerza horizontal, para disminución de temperatura (Tn) =  <span id="SFHdis"></span></p>
+        <p>Fuerza vertical, para aumento de temperatura (Tn) = <span id="SFV"></span></p>
+        <p>Fuerza vertical, para disminución de temperatura (Tn) = <span id="SFVdis"></span></p>
+
+        <p><span id="tb3">DIMENSIONES DEL ANCLAJE </span></p>
+        <p>Peso del anclaje (Tn) = <span id="WAN"></span></p>
+        <p>Volumen de concreto (m³) = <span id="VC"></span></p>
+        <p>Altura del anclaje (m) = <span id="Ybloque"></span></p>
+        <p>Volumen del tubo dentro del anclaje (m³) = <span id="VT"></span></p>
+        <p>Volumen total del bloque con el tubo (m³) = <span id="VT1"></span></p>
+        <p>Ancho del bloque (m) = <span id="FEW"></span></p>
+        <p>Peso del bloque (Tn) =  <span id="Wb"></span></p>
+        <p>Suma de las fuerzas verticales (Tn) = <span id="SFverticales"></span></p>
+
+        <p><span id="tb4">COMPROBACIÓN DE LA CAPACIDAD PORTANTE DEL SUELO </span></p>
+        <p>Al suelo se transmiten (T/m²) = <span id="CPS"></span></p>
+        <p><span id="Label3333319"></span></p>
+        <p>Suma de los momentos respecto al punto A (Txm) = <span id="tbrmanclaj0"></span></p>
+        <p>La resultante pasa por (m) = <span id="tbrmanclaj"></span></p>
+        <p><span id="Label3333334"></span></p>
+
+    </div>
+    <script src="AnclajesKrochin.js"></script>
+</body>
+</html>
+
+

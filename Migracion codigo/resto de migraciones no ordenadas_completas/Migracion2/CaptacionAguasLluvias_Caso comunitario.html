@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .error {
+            background-color: red;
+        }
+        .success {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <!-- Add your form inputs here -->
+        <input type="text" id="Tbx0">
+        <input type="text" id="Tbb0">
+        <input type="text" id="Tbh0">
+        <input type="text" id="Tbx">
+        <input type="text" id="Tbb">
+        <input type="text" id="Tbh">
+        <input type="text" id="Tblong">
+        <input type="text" id="Tblluvia">
+        <input type="text" id="Tbhl">
+        <select id="Ddformamet1">
+            <option value="0">Select...</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </select>
+        <select id="precipitationCase">
+            <option value="1">Sumar todos los meses</option>
+            <option value="2">Sumar desde Noviembre hasta abril</option>
+            <option value="3">Sumar desde Mayo hasta Octubre</option>
+        </select>
+        
+        <input type="text" id="Tbhab">
+        <input type="text" id="Tbdot">
+        <input type="text" id="Tbniu">
+        <input type="text" id="tbconshor1">
+        <input type="text" id="tbconshor2">
+        <input type="text" id="tbconshor3">
+        <input type="text" id="tbconshor4">
+        <input type="text" id="tbconshor5">
+        <input type="text" id="tbconshor6">
+        <input type="text" id="tbconshor7">
+        <input type="text" id="tbconshor8">
+        <input type="text" id="tbconshor9">
+        <input type="text" id="tbconshor10">
+        <input type="text" id="tbconshor11">
+        <input type="text" id="tbconshor12">
+        <select id="DropDownList2">
+            <option value="0">4 Decimals</option>
+            <option value="1">0 Decimals</option>
+            <option value="2">1 Decimal</option>
+            <option value="3">2 Decimals</option>
+            <option value="4">3 Decimals</option>
+            <option value="5">4 Decimals</option>
+        </select>
+        
+        <button type="button" id="Button2">Calculate</button>
+        <button type="button" id="Button8">Set Default Values</button>
+        <button onclick="button9Click()">Quitar</button>
+
+    </form>
+
+    <div id="success">
+        <div id="Label3333320" class="success" style="display: none;">RESULTADOS </div>
+        <div id="Label22" style="display: none;">Demanda mensual (m³/mes) = </div>
+        <input type="text" id="tbdemanmens" class="success" style="display: none;">
+        <div id="Label3333384" class="success" style="display: none;">Demanda anual (m³/año) = </div>
+        <input type="text" id="tbdemananual" class="success" style="display: none;">
+        <div id="Label3333383" style="display: none;">Precipitación pluvial neta media</div>
+        <table id="GridView15" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Precipitación (j) (mm)</th>
+                    <th>Precipitación Neta (j) (mm)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="Label91" class="success" style="display: none;">Área de captación (m²) =  </div>
+        <input type="text" id="tbareacap" class="success" style="display: none;">
+        <div id="Label92" style="display: none;">Diámetro de la tubería (pulg) = </div>
+        <input type="text" id="tbdiamcap" class="success" style="display: none;">
+        <div id="Label93" class="success" style="display: none;">Volumen del sedimentador necesario (m³) =  </div>
+        <input type="text" id="tbvolcap" class="success" style="display: none;">
+        <div id="Label3333393" class="success" style="display: none;">Volumen del sedimentador calculado (m³) =</div>
+        <input type="text" id="tbvolcap0" class="success" style="display: none;">
+        <div id="Label94" class="success" style="display: none;">Volumen de la cisterna necesario (m³) =</div>
+        <input type="text" id="tbvolcist" class="success" style="display: none;">
+        <div id="Label3333398" class="success" style="display: none;">Volumen de la cisterna calculado (m³) =</div>
+        <input type="text" id="tbvolcist0" class="success" style="display: none;">
+    </div>
+
+    <script src="CapatacionAguasLluvias_Caso comunitario.js"></script>
+</body>
+</html>

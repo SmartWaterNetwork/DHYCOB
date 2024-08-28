@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Curva Integral</title>
+</head>
+<body>
+    <form id="calculaForm">
+        <select id="Ddformamet1">
+            <option value="0">Cuadrada0</option>
+            <option value="1">Rectangular1</option>
+            <option value="2">Cilíndrica2</option>
+        </select>
+        <br>
+        <label for="TbQsifon">Habitantes:</label>
+        <input type="text" id="TbQsifon">
+        <br>
+        <label for="Tbbsifon">Dotación (l/h-d):</label>
+        <input type="text" id="Tbbsifon">
+        <br>
+        <label for="Tbzsifon">Suministro horario continuo (%):</label>
+        <input type="text" id="Tbzsifon">
+        <br>
+        <div id="consumoHora">
+            <label for="tbconshor1">Consumo en hora 0-1:</label>
+            <input type="text" id="tbconshor1">
+            <br>
+            <label for="tbconshor2">Consumo en hora 1-2:</label>
+            <input type="text" id="tbconshor2">
+            <br>
+            <label for="tbconshor3">Consumo en hora 2-3:</label>
+            <input type="text" id="tbconshor3">
+            <br>
+            <label for="tbconshor4">Consumo en hora 3-4:</label>
+            <input type="text" id="tbconshor4">
+            <br>
+            <label for="tbconshor5">Consumo en hora 4-5:</label>
+            <input type="text" id="tbconshor5">
+            <br>
+            <label for="tbconshor6">Consumo en hora 5-6:</label>
+            <input type="text" id="tbconshor6">
+            <br>
+            <label for="tbconshor7">Consumo en hora 6-7:</label>
+            <input type="text" id="tbconshor7">
+            <br>
+            <label for="tbconshor8">Consumo en hora 7-8:</label>
+            <input type="text" id="tbconshor8">
+            <br>
+            <label for="tbconshor9">Consumo en hora 8-9:</label>
+            <input type="text" id="tbconshor9">
+            <br>
+            <label for="tbconshor10">Consumo en hora 9-10:</label>
+            <input type="text" id="tbconshor10">
+            <br>
+            <label for="tbconshor11">Consumo en hora 10-11:</label>
+            <input type="text" id="tbconshor11">
+            <br>
+            <label for="tbconshor12">Consumo en hora 11-12:</label>
+            <input type="text" id="tbconshor12">
+            <br>
+            <label for="tbconshor13">Consumo en hora 12-13:</label>
+            <input type="text" id="tbconshor13">
+            <br>
+            <label for="tbconshor14">Consumo en hora 13-14:</label>
+            <input type="text" id="tbconshor14">
+            <br>
+            <label for="tbconshor15">Consumo en hora 14-15:</label>
+            <input type="text" id="tbconshor15">
+            <br>
+            <label for="tbconshor16">Consumo en hora 15-16:</label>
+            <input type="text" id="tbconshor16">
+            <br>
+            <label for="tbconshor17">Consumo en hora 16-17:</label>
+            <input type="text" id="tbconshor17">
+            <br>
+            <label for="tbconshor18">Consumo en hora 17-18:</label>
+            <input type="text" id="tbconshor18">
+            <br>
+            <label for="tbconshor19">Consumo en hora 18-19:</label>
+            <input type="text" id="tbconshor19">
+            <br>
+            <label for="tbconshor20">Consumo en hora 19-20:</label>
+            <input type="text" id="tbconshor20">
+            <br>
+            <label for="tbconshor21">Consumo en hora 20-21:</label>
+            <input type="text" id="tbconshor21">
+            <br>
+            <label for="tbconshor22">Consumo en hora 21-22:</label>
+            <input type="text" id="tbconshor22">
+            <br>
+            <label for="tbconshor23">Consumo en hora 22-23:</label>
+            <input type="text" id="tbconshor23">
+            <br>
+            <label for="tbconshor24">Consumo en hora 23-24:</label>
+            <input type="text" id="tbconshor24">
+            <br>
+
+
+            <!-- Agrega los demás intervalos de hora aquí, similar a este -->
+        </div>
+        <br>
+        <label for="DropDownList2">Decimales:</label>
+        <select id="DropDownList2">
+            <option value="0">4</option>
+            <option value="1">0</option>
+            <option value="2">1</option>
+            <option value="3">2</option>
+            <option value="4">3</option>
+            <option value="5">4</option>
+        </select>
+        <br>
+        <button type="button" onclick="calcular()">Calcular</button>
+        <button type="button" onclick="setValues()">Calcular</button>
+    </form>
+    <div id="resultados">
+        <label id="Label3333320" style="display:none">Resultado:</label>
+        <label id="Label22" style="display:none">Caudal promedio (m³/d):</label>
+        <span id="Qprommet1"></span>
+        <br>
+        <div id="tablaResultados" style="display:none;">
+            <h3>Tabla de Resultados</h3>
+            <table id="tablaCalculos">
+                <thead>
+                    <tr>
+                        <th>Tiempo</th>
+                        <th>C</th>
+                        <th>∑C</th>
+                        <th>S</th>
+                        <th>∑S</th>
+                        <th>Δ(S-C)</th>
+                        <th>∑Δ(S-C)</th>
+                        <th>Volumen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de la tabla se agregarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        <div id="tbVcompmet1" class="hidden result"></div>
+        <div id="tbVemermet1" class="hidden result"></div>
+        <div id="tbVcontincmet1" class="hidden result"></div>
+        <div id="tbVplanttrantmet1" class="hidden result"></div>
+        <div id="tbVtotalmet1" class="hidden result"></div>
+        <div id="tbr1met1" class="hidden result"></div>
+        <div id="Label96" class="hidden"></div>
+    <div id="Label98" class="hidden"></div>
+    <div id="tbr2met1" class="hidden"></div>
+    <div id="tbr3met1" class="hidden"></div>
+    <div id="Label3333375" class="hidden"></div>
+
+    </div>
+
+    <script>
+function calcular() {
+    const Ddformamet1 = document.getElementById('Ddformamet1');
+    const TbQsifon = document.getElementById('TbQsifon');
+    const Tbbsifon = document.getElementById('Tbbsifon');
+    const Tbzsifon = document.getElementById('Tbzsifon');
+    const DropDownList2 = document.getElementById('DropDownList2');
+
+    if (Ddformamet1.value !== "" && TbQsifon.value && Tbbsifon.value && Tbzsifon.value) {
+                Ddformamet1.style.backgroundColor = 'white';
+                TbQsifon.style.backgroundColor = 'white';
+                Tbbsifon.style.backgroundColor = 'white';
+                Tbzsifon.style.backgroundColor = 'white';
+
+        let Ndec;
+        switch (DropDownList2.value) {
+            case "0":
+                Ndec = 4;
+                break;
+            case "1":
+                Ndec = 0;
+                break;
+            case "2":
+                Ndec = 1;
+                break;
+            case "3":
+                Ndec = 2;
+                break;
+            case "4":
+                Ndec = 3;
+                break;
+            case "5":
+                Ndec = 4;
+                break;
+        }
+
+        const habmet1 = parseFloat(TbQsifon.value);
+        const dotmeto1 = parseFloat(Tbbsifon.value);
+        const sumhor = parseFloat(Tbzsifon.value);
+
+        const consumos = [];
+        for (let i = 1; i <= 24; i++) {
+            const consumo = parseFloat(document.getElementById(`tbconshor${i}`).value) || 0;
+            consumos.push(consumo);
+        }
+
+        let Qprommet1 = habmet1 * dotmeto1;
+        Qprommet1 = Qprommet1 / 1000;
+
+        document.getElementById('Label3333320').style.display = 'block';
+        document.getElementById('Label22').style.display = 'block';
+        document.getElementById('Qprommet1').innerText = Qprommet1.toFixed(4);
+
+        let sumaC = 0;
+        let sumaS = 0;
+        let sumaDelta = 0;
+        let volumen = 0;
+
+        const valoresColumna6 = [];
+        const tablaCalculos = document.getElementById('tablaCalculos').getElementsByTagName('tbody')[0];
+        tablaCalculos.innerHTML = '';
+        for (let i = 0; i < 24; i++) {
+            const C = consumos[i];
+            sumaC += C;
+
+            const S = sumhor;
+            sumaS += S;
+
+            const delta = S - C;
+            sumaDelta += delta;
+            
+            
+            valoresColumna6.push(sumaDelta);
+
+            const fila = tablaCalculos.insertRow();
+            fila.insertCell(0).innerText = `Hora ${i + 1}`;
+            fila.insertCell(1).innerText = C.toFixed(4);
+            fila.insertCell(2).innerText = sumaC.toFixed(4);
+            fila.insertCell(3).innerText = S.toFixed(4);
+            fila.insertCell(4).innerText = sumaS.toFixed(4);
+            fila.insertCell(5).innerText = delta.toFixed(4);
+            fila.insertCell(6).innerText = sumaDelta.toFixed(4);
+            fila.insertCell(7).innerText = sumaDelta.toFixed(4);
+        }
+        const valmax1 = valoresColumna6.filter(value => value < 0).reduce((max, value) => value < max ? value : max, Number.POSITIVE_INFINITY);
+        const valmax = Math.abs(valmax1);
+
+        const valmax2 = valoresColumna6.filter(value => value > 0).reduce((max, value) => value > max ? value : max, Number.NEGATIVE_INFINITY);
+        const valmaxpos = Math.abs(valmax2);
+
+        const filas = tablaCalculos.getElementsByTagName('tr');
+        for (let i = 0; i < filas.length; i++) {
+            const celdaColumna6 = filas[i].getElementsByTagName('td')[6];
+            const celdaColumna7 = filas[i].getElementsByTagName('td')[7];
+            if (celdaColumna6 && celdaColumna7) {
+                const valorColumna6 = parseFloat(celdaColumna6.innerText);
+                const nuevoValorColumna7 = valorColumna6 + valmax;
+                celdaColumna7.innerText = nuevoValorColumna7.toFixed(4);
+            }
+        }
+        document.getElementById('tablaResultados').style.display = 'block';
+
+        let Vcompmet1 = ((valmax + valmaxpos) / 100) * Qprommet1;
+        let Vemermet1 = 0.15 * Qprommet1;
+        let Vplanttrantmet1 = 0.1 * Vcompmet1;
+        
+        let Vcontincmet1;
+        if (habmet1 < 5000) {
+            Vcontincmet1 = 0;
+        } else if (habmet1 >= 5000 && habmet1 < 10000) {
+            Vcontincmet1 = 9 * 2 * 360 / 1000;
+        } else if (habmet1 >= 10000 && habmet1 < 20000) {
+            Vcontincmet1 = 16 * 2 * 360 / 1000;
+        } else if (habmet1 >= 20000) {
+            Vcontincmet1 = 31 * 2 * 360 / 1000;
+        }
+        if (habmet1 === 22000) {
+            Vcontincmet1 = 72;
+        }
+
+        let Vtotalmet1 = Vcompmet1 + Vemermet1 + Vplanttrantmet1 + Vcontincmet1;
+
+        document.getElementById('tbVcompmet1').style.display = 'block';
+        document.getElementById('tbVcompmet1').innerText = Vcompmet1.toFixed(4);
+        document.getElementById('tbVcompmet1').style.color = 'red';
+        
+        document.getElementById('tbVemermet1').style.display = 'block';
+        document.getElementById('tbVemermet1').innerText = Vemermet1.toFixed(4);
+        document.getElementById('tbVemermet1').style.color = 'red';
+
+        document.getElementById('tbVcontincmet1').style.display = 'block';
+        document.getElementById('tbVcontincmet1').innerText = Vcontincmet1.toFixed(Ndec);
+        document.getElementById('tbVcontincmet1').style.color = 'red';
+
+        document.getElementById('tbVplanttrantmet1').style.display = 'block';
+        document.getElementById('tbVplanttrantmet1').innerText = Vplanttrantmet1.toFixed(Ndec);
+        document.getElementById('tbVplanttrantmet1').style.color = 'red';
+        
+        document.getElementById('tbVtotalmet1').style.display = 'block';
+        document.getElementById('tbVtotalmet1').innerText = Vtotalmet1.toFixed(Ndec);
+        document.getElementById('tbVtotalmet1').style.color = 'red';
+
+        var Ktanmet1, Alturmet1, Areatanmet1, Basemet1, Diammet1,Ntanquesmet1;
+        var altbordlibmet1 = 0.5;
+    var altsedmet1 = 0.3;
+
+    var Vtotalmet1Div = Vtotalmet1 / 1000 / Ntanquesmet1;
+    if (Vtotalmet1Div < 3) {
+        Ktanmet1 = 2;
+    } else if (Vtotalmet1Div > 3 && Vtotalmet1Div < 6) {
+        Ktanmet1 = 1.8;
+    } else if (Vtotalmet1Div > 6 && Vtotalmet1Div < 9) {
+        Ktanmet1 = 1.5;
+    } else if (Vtotalmet1Div > 9 && Vtotalmet1Div < 13) {
+        Ktanmet1 = 1.3;
+    } else if (Vtotalmet1Div > 13 && Vtotalmet1Div < 16) {
+        Ktanmet1 = 1;
+    } else if (Vtotalmet1Div > 17) {
+        Ktanmet1 = 0.7;
+    }
+
+    Alturmet1 = (Vtotalmet1 / 300) + Ktanmet1;
+
+
+    if (Ddformamet1.selectedIndex === 2) {
+        Alturmet1 = Math.pow(Vtotalmet1 * 4 / Math.PI, 1 / 3);
+    } else if (Ddformamet1.selectedIndex === 1) {
+        Alturmet1 = Math.pow(Vtotalmet1 / 2.25, 1 / 3);
+    } else if (Ddformamet1.selectedIndex === 0) {
+        Alturmet1 = Math.pow(Vtotalmet1, 1 / 3);
+    }
+
+
+
+    Areatanmet1 = Vtotalmet1 / Alturmet1;
+    if (Ddformamet1.selectedIndex == 0) {
+        Basemet1 = Math.pow(Areatanmet1,0.5);
+    } else if (Ddformamet1.selectedIndex == 1) {
+        Basemet2 = Math.pow((Areatanmet1 / 2),0.5);
+    } else if (Ddformamet1.selectedIndex == 2) {
+        Diammet1 = Math.sqrt((Areatanmet1 * 4 / Math.PI),0.5);
+    }
+
+    Alturmet1 = Alturmet1 + altbordlibmet1 + altsedmet1;
+
+    var fraccion = Alturmet1 - Math.floor(Alturmet1);
+    if (fraccion < 0.1) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.1;
+    } else if (fraccion < 0.2) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.2;
+    } else if (fraccion < 0.3) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.3;
+    } else if (fraccion < 0.4) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.4;
+    } else if (fraccion < 0.5) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.5;
+    } else if (fraccion < 0.6) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.6;
+    } else if (fraccion < 0.7) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.7;
+    } else if (fraccion < 0.8) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.8;
+    } else if (fraccion < 0.9) {
+        Alturmet1 = Math.floor(Alturmet1) + 0.9;
+    } else {
+        Alturmet1 = Math.floor(Alturmet1) + 1;
+    }
+    document.getElementById('tbr1met1').style.display = 'block';
+    document.getElementById('tbr1met1').innerText = Alturmet1.toFixed(4);
+    document.getElementById('tbr1met1').style.color = 'red';
+
+    const selectElement = document.getElementById('Ddformamet1');
+        const label96 = document.getElementById('Label96');
+        const label98 = document.getElementById('Label98');
+        const tbr2met1 = document.getElementById('tbr2met1');
+        const tbr3met1 = document.getElementById('tbr3met1');
+        const label3333375 = document.getElementById('Label3333375');
+   
+        switch (selectElement.selectedIndex) {
+                case 0:
+                    // Tanque Cuadrado
+                    label96.style.display = 'block';
+                    label96.textContent = 'DIMENSIONES DEL TANQUE CUADRADO';
+                    label98.style.display = 'block';
+                    label98.textContent = 'Base del tanque cuadrado (m) =';
+                    tbr2met1.style.display = 'block';
+                    tbr2met1.textContent = Basemet1.toFixed(Ndec);
+                    tbr2met1.classList.add('red-text');
+                    label3333375.style.display = 'none';
+                    tbr3met1.style.display = 'none';
+                    break;
+                case 1:
+                    // Tanque Rectangular
+                    label96.style.display = 'block';
+                    label96.textContent = 'DIMENSIONES DEL TANQUE RECTANGULAR';
+                    label98.style.display = 'block';
+                    label98.textContent = 'Base mayor del tanque rectangular (m) =';
+                    label3333375.style.display = 'block';
+                    label3333375.textContent = 'Base menor del tanque rectangular (m) =';
+                    tbr2met1.style.display = 'block';
+                    tbr2met1.textContent = (2 * Basemet2).toFixed(Ndec);
+                    tbr2met1.classList.add('red-text');
+                    tbr3met1.style.display = 'block';
+                    tbr3met1.textContent = Basemet2.toFixed(Ndec);
+                    tbr3met1.classList.add('red-text');
+                    break;
+                case 2:
+                    // Tanque Cilíndrico
+                    label96.style.display = 'block';
+                    label96.textContent = 'DIMENSIONES DEL TANQUE CILÍNDRICO';
+                    label98.style.display = 'block';
+                    label98.textContent = 'Diámetro del tanque cilíndrico (m) =';
+                    tbr2met1.style.display = 'block';
+                    tbr2met1.textContent = Diammet1.toFixed(Ndec);
+                    tbr2met1.classList.add('red-text');
+                    label3333375.style.display = 'none';
+                    tbr3met1.style.display = 'none';
+                    break;
+                default:
+                    // Manejo de otros casos si es necesario
+                    break;
+            }
+    } else {
+        Ddformamet1.style.backgroundColor = '#FFDDDD';
+                TbQsifon.style.backgroundColor = '#FFDDDD';
+                Tbbsifon.style.backgroundColor = '#FFDDDD';
+                Tbzsifon.style.backgroundColor = '#FFDDDD';
+    }
+}
+
+
+
+
+        function setValues() {
+    document.getElementById('TbQsifon').value = 22000;
+    document.getElementById('Tbbsifon').value = 125;
+    document.getElementById('Tbzsifon').value = 4.167;
+    document.getElementById('Ddformamet1').value = 2;
+    document.getElementById('tbconshor1').value = 1;
+    document.getElementById('tbconshor2').value = 1;
+    document.getElementById('tbconshor3').value = 1;
+    document.getElementById('tbconshor4').value = 1;
+    document.getElementById('tbconshor5').value = 2;
+    document.getElementById('tbconshor6').value = 4;
+    document.getElementById('tbconshor7').value = 9.5;
+    document.getElementById('tbconshor8').value = 8;
+    document.getElementById('tbconshor9').value = 7;
+    document.getElementById('tbconshor10').value = 4;
+    document.getElementById('tbconshor11').value = 3;
+    document.getElementById('tbconshor12').value = 5.5;
+    document.getElementById('tbconshor13').value = 9;
+    document.getElementById('tbconshor14').value = 5;
+    document.getElementById('tbconshor15').value = 3;
+    document.getElementById('tbconshor16').value = 2.5;
+    document.getElementById('tbconshor17').value = 3;
+    document.getElementById('tbconshor18').value = 3.5;
+    document.getElementById('tbconshor19').value = 5;
+    document.getElementById('tbconshor20').value = 9;
+    document.getElementById('tbconshor21').value = 8.5;
+    document.getElementById('tbconshor22').value = 2;
+    document.getElementById('tbconshor23').value = 1.5;
+    document.getElementById('tbconshor24').value = 1;
+}
+
+    </script>
+</body>
+</html>
+    </script>
+</body>
+</html>

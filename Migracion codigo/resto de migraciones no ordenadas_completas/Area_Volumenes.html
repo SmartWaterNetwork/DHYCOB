@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Curvas Área-Volumen</title>
+    <style>
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora Curvas "Área-Volumen" de un Embalse</h2>
+    <label for="numFilas">Seleccione el número de filas:</label>
+    <select id="numFilas">
+        <!-- Lista de opciones del 5 al 40 -->
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+    </select>
+    <button onclick="generarTabla()">Generar Tabla</button>
+    <div id="tablaContainer"></div>
+    <button id="calcularButton" style="display:none;" onclick="calcularResultados()">Calcular Resultados</button>
+    <div id="resultadosContainer"></div>
+
+    <script>
+        function generarTabla() {
+            const numFilas = document.getElementById('numFilas').value;
+            let tablaContainer = document.getElementById('tablaContainer');
+            tablaContainer.innerHTML = '';  // Limpiar contenido previo
+            document.getElementById('resultadosContainer').innerHTML = ''; // Limpiar resultados previos
+            
+            let tabla = document.createElement('table');
+            let thead = document.createElement('thead');
+            let tbody = document.createElement('tbody');
+            
+            // Crear cabecera de la tabla
+            let filaCabecera = document.createElement('tr');
+            let th1 = document.createElement('th');
+            th1.textContent = 'Curva Nivel';
+            let th2 = document.createElement('th');
+            th2.textContent = 'Elevación (m)';
+            let th3 = document.createElement('th');
+            th3.textContent = 'Área (m²)';
+            
+            filaCabecera.appendChild(th1);
+            filaCabecera.appendChild(th2);
+            filaCabecera.appendChild(th3);
+            thead.appendChild(filaCabecera);
+            
+            // Crear filas de la tabla
+            for (let i = 1; i <= numFilas; i++) {
+                let fila = document.createElement('tr');
+                
+                let celdaCurva = document.createElement('td');
+                celdaCurva.textContent = i;
+                
+                let celdaElevacion = document.createElement('td');
+                let inputElevacion = document.createElement('input');
+                inputElevacion.type = 'number';
+                inputElevacion.step = 'any';
+                celdaElevacion.appendChild(inputElevacion);
+                
+                let celdaArea = document.createElement('td');
+                let inputArea = document.createElement('input');
+                inputArea.type = 'number';
+                inputArea.step = 'any';
+                celdaArea.appendChild(inputArea);
+                
+                fila.appendChild(celdaCurva);
+                fila.appendChild(celdaElevacion);
+                fila.appendChild(celdaArea);
+                
+                tbody.appendChild(fila);
+            }
+            
+            tabla.appendChild(thead);
+            tabla.appendChild(tbody);
+            tablaContainer.appendChild(tabla);
+
+            // Mostrar el botón de calcular
+            document.getElementById('calcularButton').style.display = 'block';
+        }
+
+        function calcularResultados() {
+            let tabla = document.querySelector('#tablaContainer table');
+            let filas = tabla.querySelectorAll('tbody tr');
+            let resultadosContainer = document.getElementById('resultadosContainer');
+            resultadosContainer.innerHTML = ''; // Limpiar resultados previos
+            
+            let tablaResultados = document.createElement('table');
+            let theadResultados = document.createElement('thead');
+            let tbodyResultados = document.createElement('tbody');
+            
+            // Crear cabecera de la tabla de resultados
+            let filaCabeceraResultados = document.createElement('tr');
+            let th1 = document.createElement('th');
+            th1.textContent = 'Curva Nr.';
+            let th2 = document.createElement('th');
+            th2.textContent = 'Elevación (m)';
+            let th3 = document.createElement('th');
+            th3.textContent = 'Área (m²)';
+            let th4 = document.createElement('th');
+            th4.textContent = 'Suma de áreas (m²)';
+            let th5 = document.createElement('th');
+            th5.textContent = 'Intervalo de altura (m)';
+            let th6 = document.createElement('th');
+            th6.textContent = 'Volumen parcial (m³)';
+            let th7 = document.createElement('th');
+            th7.textContent = 'Volumen acumulado (m³)';
+            
+            filaCabeceraResultados.appendChild(th1);
+            filaCabeceraResultados.appendChild(th2);
+            filaCabeceraResultados.appendChild(th3);
+            filaCabeceraResultados.appendChild(th4);
+            filaCabeceraResultados.appendChild(th5);
+            filaCabeceraResultados.appendChild(th6);
+            filaCabeceraResultados.appendChild(th7);
+            theadResultados.appendChild(filaCabeceraResultados);
+            
+            let sumaAreasAcumulada = 0;
+            let volumenAcumulado = 0;
+
+            // Recorrer las filas de la tabla original
+            for (let i = 0; i < filas.length; i++) {
+                let fila = filas[i];
+                let curvaNr = i + 1;
+                let elevacion = parseFloat(fila.querySelector('td:nth-child(2) input').value);
+                let area = parseFloat(fila.querySelector('td:nth-child(3) input').value);
+
+                sumaAreasAcumulada += area;
+                
+                let intervaloAltura = (i === 0) ? 0 : (elevacion - parseFloat(filas[i - 1].querySelector('td:nth-child(2) input').value))/2;
+                let volumenParcial = (i === 0) ? 0 : sumaAreasAcumulada  * intervaloAltura;
+                volumenAcumulado += volumenParcial;
+
+                let filaResultado = document.createElement('tr');
+                filaResultado.innerHTML = `
+                    <td>${curvaNr}</td>
+                    <td>${elevacion.toFixed(2)}</td>
+                    <td>${area.toFixed(2)}</td>
+                    <td>${sumaAreasAcumulada.toFixed(2)}</td>
+                    <td>${intervaloAltura.toFixed(2)}</td>
+                    <td>${volumenParcial.toFixed(2)}</td>
+                    <td>${volumenAcumulado.toFixed(2)}</td>
+                `;
+                
+                tbodyResultados.appendChild(filaResultado);
+            }
+
+            tablaResultados.appendChild(theadResultados);
+            tablaResultados.appendChild(tbodyResultados);
+            resultadosContainer.appendChild(tablaResultados);
+        }
+    </script>
+</body>
+</html>
