@@ -1,0 +1,1730 @@
+.contenedor{
+    background-color: #FFFFFF;
+    position: relative; 
+    top: -70px; 
+    left: 0px; 
+  }
+  .contenedor3{
+    background-color: #FFFFFF;
+    position: relative;    
+    top: -200px; 
+    left: 80px;
+  }
+  .Sl{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600; 
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .Tn{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .Str{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    position: relative; 
+    cursor: pointer;
+    left: 20px; 
+  }
+
+
+  #ig_2{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    color: #f1f1f1;
+  }
+  .Sp{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    position: relative; 
+    cursor: pointer;
+    left: 20px; 
+  }
+  
+  #Dt{
+    cursor: pointer;
+  }
+  #Br{
+    cursor: pointer;
+  }
+  #Ig{
+    cursor: pointer;
+  }
+  #Sc{
+    cursor: pointer;
+  }
+  #t_Sc{
+    cursor: pointer;
+  }
+
+
+  #c{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    position: relative; 
+    left: 20px;  
+    cursor: pointer;
+  }
+  #c_2{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    position: relative; 
+    left: 20px;  
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .c{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    position: relative; 
+    left: 20px; 
+  }
+
+
+  .contenedor4{
+    background-color: #FFFFFF;
+    position: relative;
+    top: -200px; 
+    left: 80px;
+  }
+  .contenedor5{
+    background-color: #FFFFFF;
+    position: relative;
+    top: -202px; 
+    left: 80px;
+  }
+  .contenedor6{
+    background-color: #FFFFFF;
+    position: relative;
+    top: -200px; 
+    left: 80px;
+  }
+  .circle {
+    position: relative;
+    width: 15px;         
+    height: 15px;         
+    background-color: #2180C6;  
+    border-radius: 50%;     
+    z-index: 4000;
+    top: -158px; 
+    left: 49px;
+}
+.rectangulo6{
+    width: 425px;
+    height: 1px;
+    position: relative; 
+    top: 44px; 
+    left: -158px; 
+    background-color: #2180C6; 
+    transform: rotate(90deg);
+}
+.rectangulo7{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: -132px; 
+    left: 55px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo8{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: -3px; 
+    left: 55px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo9{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 253px; 
+    left: 55px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo10{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 91px; 
+    left: 55px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.image {
+    transition: opacity 0.3s ease-in-out;
+    width: 225px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -980px; 
+    left: 54px; 
+}
+.image-2 {
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;
+    width: 225px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -980px; 
+    left: -185px; 
+}
+.image-3 {
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;
+    width: 225px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -980px; 
+    left: -425px; 
+}
+.image-4 {
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;
+    width: 225px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -980px; 
+    left: -664px; 
+}
+.contenedorLinea1{
+    background-color: #FFFFFF;
+}
+
+.contenedorLinea2{
+    background-color: #FFFFFF;
+    position: relative; 
+    top: -799px; 
+    left: 380px; 
+}
+.image2 {
+    width: 290px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -880px; 
+    left: 54px; 
+}
+
+.rectangulo6-1{
+    width: 485px;
+    height: 1px;
+    position: relative; 
+    top: 83px; 
+    left: -188px; 
+    background-color: #2180C6; 
+    transform: rotate(90deg);
+}
+.rectangulo7-1{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: -130px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo8-1{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 57px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo9-1{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 286px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo10-1{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 321px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo11-1{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 184px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.contenedorLinea3{
+    background-color: #FFFFFF;
+    position: relative; 
+    top: -1505px; 
+    left: 810px; 
+}
+.image3 {
+    width: 190px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -622px; 
+    left: 54px; 
+}
+.rectangulo6-2{
+    width: 224px;
+    height: 1px;
+    position: relative; 
+    top: -48px; 
+    left: -58px; 
+    background-color: #2180C6; 
+    transform: rotate(90deg);
+}
+.rectangulo8-2{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: -35px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo9-2{
+    width: 27px;
+    height: 1px;
+    position: relative; 
+    top: 61px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+
+.contenedorLinea4{
+    background-color: #FFFFFF;
+    position: relative; 
+    top: -1950px; 
+    left: 1140px; 
+}
+.image4 {
+    width: 250px;          
+    height: 125px;            
+    border: 5px solid #003C69;  
+    position: relative; 
+    top: -850px; 
+    left: 50px; 
+}
+.contenedor7{
+    background-color: #FFFFFF;
+    position: relative;
+    top: -200px; 
+    left: 80px;
+  }
+  .contenedor8{
+    background-color: #FFFFFF;
+    position: relative;
+    top: -200px; 
+    left: 80px;
+  }
+  .rectangulo6-3{
+    width: 456px;
+    height: 1px;
+    position: relative; 
+    top: 67px; 
+    left: -174px; 
+    background-color: #2180C6; 
+    transform: rotate(90deg);
+}
+.rectangulo7-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: -130px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo8-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: 90px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo9-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: 123px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo10-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: 195px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+.rectangulo11-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: 157px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+
+.rectangulo12-3{
+    width: 26px;
+    height: 1px;
+    position: relative; 
+    top: 289px; 
+    left: 54px; 
+    background-color: #2180C6; 
+    z-index: 5000;
+}
+
+
+
+
+.cont-2{
+    visibility: hidden;
+    background-color: #003C69;
+    width: 349.5px;
+    height: 600px;
+    position: fixed; 
+    top: 90px; 
+    left: 0px; 
+    z-index: 10000;
+    transition: left 0.5s;
+    overflow-x: auto; 
+    white-space: nowrap;
+}
+#c2::-webkit-scrollbar {
+    height: 10px;
+}
+
+
+
+.contenedorFinal{
+    transition: opacity 0.7s ease-out;
+    position: relative;
+    top: 20px;
+    left: 50px;
+    z-index: 6000;
+}
+
+@keyframes moveFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+
+
+
+.e1{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 645; 
+    font-size: 17px;
+    position: relative;
+    left: 80px;
+    color: #5F6162; 
+}
+
+.e1_datos{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700; 
+    font-size: 17px;
+    position: relative;
+    left: 80px; 
+    top: 20px; 
+}
+
+.e1_decimales{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500; 
+    font-size: 13px;
+    position: relative;
+    left: 80px; 
+    top: 40px; 
+}
+
+.e1_input{
+    position: relative;
+    left: 80px; 
+    top: 40px; 
+    z-index: 6000;
+    border-radius: 5px; 
+    width: 340px; 
+    height: 30px;
+    border: 1px solid #ccc;
+}
+.e1_boton{
+    position: relative;
+    left: -273px; 
+    top: 100px; 
+    border-radius: 7px; 
+    width: 346px; 
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: linear-gradient(to right, #003C69, #0D7AAB);
+    color: white;
+}
+
+.e1_boton_1{
+    position: relative;
+    left: -625px; 
+    top: 155px; 
+    border-radius: 5px; 
+    width: 170px; 
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid #003C69;
+    background: #ffff;
+    color: #003C69;
+}
+
+.e1_boton_2{
+    position: relative;
+    left: -615px; 
+    top: 155px; 
+    border-radius: 5px; 
+    width: 163px; 
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid #003C69;
+    background: #ffff;
+    color: #003C69;
+}
+
+.e1_resultados{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700; 
+    font-size: 17px;
+    position: relative;
+    left: 605px; 
+    top: -420px; 
+}
+
+.e1_rectangulo{
+    position: relative;
+    left: 600px; 
+    top: -420px; 
+    width: 650px; 
+    height: 530px; 
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+}
+
+.e1_result{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500; 
+    font-size: 14px;
+    position: relative;
+    left: 650px; 
+    top: -950px; 
+}
+
+.e1_input_2{
+    position: relative;
+    left: 650px; 
+    top: -950px; 
+    z-index: 6000;
+    border-radius: 5px; 
+    width: 230px; 
+    height: 25px;
+    border: 1px solid #ccc;
+    background-color: rgba(33, 128, 198, 0.2); 
+}
+
+.e1_result2{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500; 
+    font-size: 14px;
+    position: relative;
+    left: 950px; 
+    top: -1332px; 
+}
+
+.e1_input_3{
+    position: relative;
+    left: 950px; 
+    top: -1332px; 
+    z-index: 6000;
+    border-radius: 5px; 
+    width: 230px; 
+    height: 25px;
+    border: 1px solid #ccc;
+    background-color: #2180C6;
+    background-color: rgba(33, 128, 198, 0.2);
+}
+
+.img_Experimento_Str{
+    width: 25px;          
+    height: 25px;            
+    position: relative; 
+    top: -1720px; 
+    left: 44px; 
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.img2_Experimento_Str{
+    width: 20px;          
+    height: 20px;            
+    position: relative; 
+    top: -1144px; 
+    left: 50px; 
+}
+
+.img3_Experimento_Str{
+    width: 20px;          
+    height: 20px;            
+    position: relative; 
+    top: -1144px; 
+    left: 240px; 
+}
+.raya-result{
+    width: 420px;
+    height: 0px;
+    position: relative; 
+    top: -1443px; 
+    left: 270px; 
+    background-color: #ffffff; 
+    border: 0.5px solid #ccc;
+    z-index: 5000;
+    transform: rotate(90deg);
+
+}
+
+.e1_contenedor_resultados{
+    opacity: 0;
+    position: relative; 
+    top: 65px; 
+}
+
+
+.Experimento_Str{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -2920px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+@keyframes moveFadeOut2 {
+    0% {
+        opacity: 0;
+        transform: translateX(600px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFadeOut3 {
+    0% {
+        opacity: 0;
+        transform: translateX(350px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveFadeOut4 {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+}
+
+
+.e1_rectangulo_a{
+    position: relative;
+    left: 0px; 
+    top: -3600px; 
+    width: 1700px; 
+    height: 1300px; 
+    background-color: #ffffff; 
+}
+
+.e2_input{
+    position: relative;
+    left: 80px; 
+    top: 40px; 
+    z-index: 6000;
+    border-radius: 5px; 
+    width: 340px; 
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.e2_boton{
+    position: relative;
+    left: -273px; 
+    top: 100px; 
+    border-radius: 7px; 
+    width: 346px; 
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: linear-gradient(to right, #003C69, #0D7AAB);
+    color: white;
+}
+
+.e2_boton_1{
+    position: relative;
+    left: -625px; 
+    top: 155px; 
+    border-radius: 5px; 
+    width: 170px; 
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid #003C69;
+    background: #ffff;
+    color: #003C69;
+}
+
+.e2_boton_2{
+    position: relative;
+    left: -615px; 
+    top: 155px; 
+    border-radius: 5px; 
+    width: 163px; 
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid #003C69;
+    background: #ffff;
+    color: #003C69;
+}
+
+.e2_select{
+    position: relative;
+    left: -270px; 
+    top: 80px; 
+    cursor: pointer;
+    z-index: 6000;
+}
+
+.img_Experimento_Sp{
+    width: 25px;          
+    height: 25px;            
+    position: relative; 
+    top: -1718px; 
+    left: 40px;
+    transform: rotate(180deg);
+    cursor: pointer; 
+}
+
+.img2_Experimento_Sp{
+    width: 20px;          
+    height: 20px;            
+    position: relative; 
+    top: -1219px; 
+    left: 50px; 
+}
+
+.img3_Experimento_Sp{
+    width: 20px;          
+    height: 20px;            
+    position: relative; 
+    top: -1219px; 
+    left: 240px; 
+}
+
+.e2_resultados{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700; 
+    font-size: 17px;
+    position: relative;
+    left: 600px; 
+    top: -345px; 
+}
+
+.e2_rectangulo{
+    position: relative;
+    left: 590px; 
+    top: -345px; 
+    width: 650px; 
+    height: 530px; 
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+}
+
+
+.e2_contenedor_resultados{
+    position: relative;
+    top: 110px; 
+    opacity: 0;
+}
+
+.e2_select {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:#003C69; 
+    background-color: #fff; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.e2_select option {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #003C69;
+}
+
+#raya_result_Sp{
+    width: 390px;
+    height: 0px;
+    position: relative; 
+    top: -1450px; 
+    left: 290px; 
+}
+.Experimento_Sp{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -5140px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_Dt{
+    top: -6945px;
+    z-index: 6000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    
+}
+
+#img2_Experimento_Dt{
+    z-index: 6000;
+    top: -6061px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#img3_Experimento_Dt{
+    z-index: 6000;
+    top: -6061px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#e3_resultados{
+    top: -723px; 
+}
+#e3_rectangulo{
+    width: 850px; 
+    height: 920px; 
+    top: -700px; 
+}
+
+.chartContainer{
+    position: relative;
+    width: 800px; 
+    height: 400px;
+    left: 620px; 
+    top: -1200px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
+
+.dataTable{
+    position: relative;
+    width: 730px; 
+    height: 180px;
+    left: 665px; 
+    top: -2050px; 
+    table-layout: fixed;
+    border-collapse: collapse; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0D7AAB;
+
+}
+
+.dataTable th, .dataTable td {
+    border: 1px solid #0D7AAB;
+    text-align: center;
+    padding: 8px;
+}
+
+.dataTable th {
+    background-color: #0D7AAB;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.dataTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.dataTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.dataTable tr:last-child td {
+    border-bottom: none; 
+}
+
+.dataTable td:first-child, .dataTable th:first-child {
+    border-left: none; 
+}
+
+.dataTable td:last-child, .dataTable th:last-child {
+    border-right: none; 
+}
+
+.Experimento_Dt{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -6045px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_Br{
+    top: -7900px;
+    z-index: 6000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    
+}
+
+#img2_Experimento_Br{
+    z-index: 6000;
+    top: -7095px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#img3_Experimento_Br{
+    z-index: 6000;
+    top: -7097px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#chartContainer_2{
+    top: -1110px; 
+}
+
+#dataTable_2{
+    top: -2205px; 
+}
+
+#e4_resultados{
+    top: -643px; 
+}
+#e4_rectangulo{
+    width: 850px; 
+    height: 1160px; 
+    top: -620px; 
+}
+
+.Experimento_Br{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -7000px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_Ig{
+    top: -8840px;
+    z-index: 6000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    
+}
+
+#img2_Experimento_Ig{
+    z-index: 6000;
+    top: -8034px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#img3_Experimento_Ig{
+    z-index: 6000;
+    top: -8034px; 
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+#dataTable_3{
+    top: -1950px; 
+    left: 625px; 
+    width: 1020px; 
+    height: 180px;
+}
+
+#chartContainer_3{
+    left: 730px; 
+    top: -1180px; 
+}
+
+#e5_rectangulo{
+    width: 1070px; 
+    height: 900px; 
+    top: -620px; 
+}
+
+.Experimento_Ig{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -7940px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#e6_espejoAgua{
+    top: -950px;
+    left: 650px;
+}
+#e6_u{
+    top: -950px;
+    left: 650px;
+}
+#img_Experimento_Sc{
+    top: -1645px;
+}
+#img2_Experimento_Sc{
+    top: -1145px;
+}
+#img3_Experimento_Sc{
+    top: -1145px;
+}
+#raya_result_Sc{
+    top: -1350px;
+}
+
+.Experimento_Sc{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -8900px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#img_Experimento_tirante_str{
+    top: -1492px;
+}
+#e7_espejoAgua{
+    top: -945px;
+    left: 650px;
+}
+#e7_tirante_str_result{
+    top: -270px;
+}
+#e7_tirante_str_rect{
+    top: -270px;
+}
+#e7_contenedor_resultados{
+    top: 190px;
+}
+#raya_result_tirante_str{
+    top: -1200px;
+}
+#img2_Experimento_tirante_str{
+    top: -1068px;
+}
+#img3_Experimento_tirante_str{
+    top: -1068px;
+}
+
+.Experimento_tirante_str{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -9810px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_tirante_Sc{
+    top: -1415px;
+}
+#e8_contenedor_resultados{
+    top: 290px;
+}
+#e8_tirante_sc_result{
+    top: -190px;
+}
+
+#e8_tirante_sc_rect{
+    top: -190px;
+}
+#e8_espejoAgua{
+    top: -945px;
+    left: 650px;
+}
+#raya_result_tirante_sc{
+    top: -1150px;
+}
+
+.Experimento_tirante_Sc{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -10720px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_salto_Sr{
+    top: -1342px;
+}
+
+#img2_Experimento_tirante_Sr{
+    top: -920px;
+}
+
+#img3_Experimento_tirante_Sr{
+    top: -921px;
+}
+#e9_contenedor_resultados{
+    top: 210px;
+}
+#e9_pendienteCanal{
+    top: -1250px;
+}
+#e9_pc{
+    top: -1250px;
+}
+#e9_perdida{
+    top: -1250px;
+}
+#e9_u{
+    top: -1255px;
+}
+
+#raya_result_tirante_Sr{
+    top: -1100px;
+}
+.Experimento_salto_Sr{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -11630px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#img_Experimento_salto_t{
+    top: -1462px;
+}
+
+#img2_Experimento_salto_t{
+    top: -960px;
+}
+#img3_Experimento_salto_t{
+    top: -960px;
+}
+#e10_nfc{
+    top: -950px;
+    left: 650px;
+}
+#e10_tirante_su{
+    top: -1295px;
+}
+#raya_result_salto_t{
+    top: -1200px;
+}
+
+.Experimento_salto_t{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -12550px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#e11_resultados{
+    top: -650px;
+}
+
+#e11_rectangulo{
+    top: -650px;
+}
+
+#e11_contenedor_resultados{
+    top: -120px;
+}
+
+#img_Experimento_drenajes_dZa{
+    top: -1500px;
+}
+
+#img2_Experimento_drenajes_dZa{
+    top: -695px;
+}
+
+#img3_Experimento_drenajes_dZa{
+    top: -695px;
+}
+
+#e11_raya_result{
+    top: -1200px;
+}
+
+.Experimento_drenajes_dZa{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -13475px;
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_drenajes_dTe{
+    top: -1345px;
+}
+
+#e12_resultados{
+    top: -505px;
+}
+
+#e12_rectangulo{
+    top: -505px;
+}
+#e12_raya_result{
+    top: -1110px;
+}
+.Experimento_drenajes_dTe{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -14390px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#img_Experimento_drenajes_dagan_sh{
+    top: -1500px;
+}
+#e13_contenedor_resultados{
+    top: -110px;
+}
+.Experimento_drenajes_dagan_sh{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -15310px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_drenajes_dagan_sete{
+    top: -1575px;
+}
+#e14_contenedor_resultados{
+    top: -110px;
+}
+.Experimento_drenajes_dagan_sete{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -16220px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_drenajes_glover_za{
+    top: -1803px;
+}
+#e15_contenedor_resultados{
+    top: -290px;
+    left: 130px;
+}
+
+#e15_resultados{
+    top: -795px;
+}
+
+#e15_rectangulo{
+    top: -795px;
+}
+
+#img2_Experimento_glover_za{
+    top: -843px;
+}
+
+#img3_Experimento_glover_za{
+    top: -843px;
+}
+
+#e15_raya_result{
+    top: -1500px;
+}
+.Experimento_drenajes_glover_za{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -17125px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#img_Experimento_drenajes_glover_te{
+    top: -1648px;
+}
+#e16_contenedor_resultados{
+    top: -175px;
+    left: 130px;
+}
+
+#img2_Experimento_glover_te{
+    top: -843px;
+}
+
+#img3_Experimento_glover_te{
+    top: -843px;
+}
+
+#e16_raya_result{
+    top: -1300px;
+}
+.Experimento_drenajes_glover_te{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -18050px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#img_Experimento_drenajes_jenab_za{
+    top: -1803px;
+}
+#e17_contenedor_resultados{
+    top: -290px;
+    left: 130px;
+}
+.Experimento_drenajes_jenab_za{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -18970px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+#img_Experimento_drenajes_jenab_te{
+    top: -1649px;
+}
+#e18_contenedor_resultados{
+    top: -180px;
+    left: 130px;
+}
+.Experimento_drenajes_jenab_te{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -19900px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#e19_contenedor_resultados{
+    top: -180px;
+}
+
+#img_Experimento_elementosH_tuneles_r_hb{
+    top: -2174px;
+}
+
+#img2_Experimento_elementosH_tuneles_r_hb{
+    top: -1367px;
+}
+
+#img3_Experimento_elementosH_tuneles_r_hb{
+    top: -1367px;
+}
+
+#e19_raya_result{
+    top: -1890px;
+}
+
+.e1_result_eH_conjunto{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500; 
+    font-size: 14px;
+    position: relative;
+    left: 980px; 
+    top: -1410px; 
+}
+
+.e1_input_eH_conjunto{
+    position: relative;
+    left: 980px; 
+    top: -1410px; 
+    z-index: 6000;
+    border-radius: 5px; 
+    width: 230px; 
+    height: 25px;
+    border: 1px solid #ccc;
+    background-color: rgba(33, 128, 198, 0.2); 
+}
+
+.Experimento_elementosH_tuneles_r_hb{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -20800px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+#e20_contenedor_resultados{
+    top: -130px;
+}
+
+#img_Experimento_drenajes_hooghoudt_za{
+    top: -1650px;
+}
+
+#img2_Experimento_drenajes_hooghoudt_za{
+    top: -768px;
+}
+
+#img3_Experimento_drenajes_hooghoudt_za{
+    top: -768px;
+}
+
+.Experimento_drenajes_hooghoudt_za{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -21720px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+
+#e21_conjunto{
+    position: relative;
+    top: 40px;
+}
+
+#e21_list{
+    position: relative;
+    top: 110px;
+}
+
+
+#e21_contenedor_resultados{
+    top: 280px;
+}
+
+#img_Experimento_elementosH_tuneles_cr{
+    top: -1518px;
+}
+
+#img2_Experimento_elementosH_tuneles_cr{
+    top: -1104px;
+}
+
+#img3_Experimento_elementosH_tuneles_cr{
+    top: -1104px;
+}
+
+#e21_re{
+    top: -220px ;
+}
+
+#e21_rec{
+    top: -220px;
+}
+
+#e21_raya{
+    top: -1220px;
+}
+
+.Experimento_elementosH_tuneles_cr{
+    transition: opacity 0.7s ease-out;
+    background-color: #FFFFFF;
+    width: 1540px;
+    height: 900px;
+    position: relative; 
+    top: -22630px; 
+    opacity: 0;
+    pointer-events: none; 
+    z-index: 6000;
+}
+
+
+
+
+
+
+
+  .suscribete-button{
+    z-index: 8000;
+    position: relative;
+    top: 46px; 
+    left: 46px;
+    cursor: pointer; 
+    opacity: 0;
+  }
+  .rectangulo {
+    width: 1200px;
+    height: 20px;
+    position: relative; 
+    z-index: 4000;
+    top: -2px; 
+    background-color: #003C69; 
+}
+.rectangulo2 {
+    width: 670px;
+    height: 150px;
+    position: relative; 
+    top: -80px; 
+    left: 1000px; 
+    z-index: 5000;
+    background-color: #003C69; 
+    border-bottom-left-radius: 40px; 
+    border-bottom-right-radius: 40px;   
+}
+.rectangulo3{
+    width: 41px;
+    height: 41px;
+    position: relative; 
+    z-index: 2000;
+    top: -285px; 
+    left: 40px; 
+    background-color: #FFFFFF; 
+    border-radius: 10px;
+    border: 2px solid #003C69;
+    background-image: url('menu.png'); 
+    background-size: cover;
+    background-position: center;
+}
+.rectangulo4{
+    width: 1700px;
+    height: 100px;
+    position: relative; 
+    top: 100px; 
+    left: -5px; 
+    background-color: #FFFFFF; 
+}
+.rectangulo5{
+    width: 1700px;
+    height: 5px;
+    position: relative; 
+    top: -280px; 
+    left: -5px; 
+    background-color: #FFFFFF; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.log{
+    position: relative; 
+    top: -165px; 
+    left: 10px; 
+}
+.contSuper{
+    display: flex;
+    justify-content: space-around;
+    position: relative; 
+    top: -165px; 
+    left: -70px; 
+    z-index: 6000;
+}
+.contSuper h3 {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600; 
+    margin: 0 23px;
+    color: white;
+    font-size: 20px;
+}
+.encabe{
+    position: relative; 
+    top: -140px; 
+    left: 80px; 
+    color: #003C69;
+}
+:root{
+    background-color: #FFFFFF;
+}
+
+#menu{
+    background-color: #003C69; 
+    width: 350px;
+    position: fixed; 
+    border-radius: 20px;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.accordion {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.accordion-item {
+    margin-bottom: 40px; 
+}
+
+.accordion-button {
+    background-color: #003c69;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+}
+
+.accordion-button:hover {
+    background-color: #003c69;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow-x: scroll;
+    background-color: #7494b4;
+    padding: 0 10px;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.accordion-content::-webkit-scrollbar {
+    height: 1px;
+    color: #7494b4;
+}
+
+
+.accordion-content.open {
+    padding: 10px;
+}
+
+.nested-accordion {
+    margin-left: 20px;
+}
+
+.nested-accordion .accordion-item {
+    margin-bottom: 1px; 
+}
+
+.nested-accordion .accordion-button {
+    background-color: #003c69;
+    border-radius: 3px;
+}
+
+ #Str_2{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
